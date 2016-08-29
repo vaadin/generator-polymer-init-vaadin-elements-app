@@ -1,0 +1,110 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid.html">
+<link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+
+<dom-module id="employee-list">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-material {
+        background-color: white;
+        margin: 24px;
+        padding: 16px;
+      }
+    </style>
+
+    <paper-material elevation="1">
+      <vaadin-combo-box label="Filter by first name" items="[[_names]]" value="{{_filterValue}}"></vaadin-combo-box>
+      <vaadin-grid id="grid">
+        <table>
+          <colgroup>
+            <col>
+            <col>
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Surname</th>
+              <th>Activity</th>
+            </tr>
+          </thead>
+        </table>
+      </vaadin-grid>
+    </paper-material>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'employee-list',
+
+      properties: {
+        _names: {
+          type: Array,
+          value: function() {
+            return ['Artur', 'Patrik', 'Henrik', 'Teemu'];
+          }
+        },
+        _surnames: {
+          type: Array,
+          value: function() {
+            return ['Signell', 'Lehtinen', 'Ahlroos', 'Paul'];
+          }
+        },
+        _activities: {
+          type: Array,
+          value: function() {
+            return ['Design', 'Implement', 'Polish', 'Deliver']
+          }
+        },
+        _targets: {
+          type: Array,
+          value: function() {
+            return ['soup', 'Vaadin', 'dog', 'world peace'];
+          }
+        },
+        _employees: {
+          type: Array,
+          value: function() {
+            return [];
+          }
+        },
+        _filterValue: {
+          type: String,
+          observer: '_filterValueChanged',
+          value: ''
+        }
+      },
+
+      ready: function() {
+        this._setEmployees();
+        this.$.grid.items = this._employees;
+      },
+
+      _setEmployees: function() {
+        for (var i = 0; i < 100; i++) {
+          var row = [this._generateRandom(this._names), this._generateRandom(this._surnames), this._generateRandom(this._activities), this._generateRandom(this._targets)];
+          this._employees.push(row);
+        }
+      },
+
+      _generateRandom: function(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      },
+
+      _filterValueChanged: function() {
+        this.$.grid.items = this._employees.filter(function(val) {
+          if (this._filterValue) {
+            return (val[0].toLowerCase()).indexOf(this._filterValue.toLowerCase()) > -1;
+          } else {
+            return true;
+          }
+        }.bind(this));
+      }
+    });
+  </script>
+</dom-module>

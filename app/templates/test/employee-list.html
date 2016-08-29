@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>employee-list</title>
+
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+
+    <!-- Import the element to test -->
+    <link rel="import" href="../src/employee-list.html">
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <employee-list></employee-list>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('employee-list tests', function() {
+        var home;
+
+        setup(function() {
+          home = fixture('basic');
+        });
+
+        test('vaadin-combo-box has 4 items', function() {
+          var comboBox = Polymer.dom(home.root).querySelector('vaadin-combo-box');
+          assert.equal(comboBox.items.length, 4);
+        })
+      });
+    </script>
+  </body>
+</html>

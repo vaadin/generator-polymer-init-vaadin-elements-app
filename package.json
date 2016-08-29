@@ -4,7 +4,7 @@
   "description": "Progressive web application template with Polymer App Toolbox and Vaadin Elements",
   "main": "app/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,10 @@
   "homepage": "https://github.com/vaadin/generator-polymer-init-vaadin-elements-app#readme",
   "dependencies": {
     "yeoman-generator": "^0.24.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.2",
+    "yeoman-assert": "^2.2.1",
+    "yeoman-test": "^1.4.0"
   }
 }

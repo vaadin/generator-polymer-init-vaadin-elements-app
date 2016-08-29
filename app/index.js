@@ -1,6 +1,7 @@
 var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var path = require('path');
+var fs = require('fs');
 
 module.exports = class VaadinElementsApplicationGenerator extends generators.Base {
   constructor(args, options) {
@@ -40,8 +41,14 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
   }
 
   writing() {
+    // Can not copy .gitignore because of npm, see: https://github.com/yeoman/generator/issues/812
+    this.fs.write(
+      this.destinationPath('.gitignore'),
+      fs.readFileSync(this.templatePath('.gitignore'))
+    );
+
     this.fs.copyTpl(
-      path.join(this.templatePath(), '**', '?(.)!(_)*'),
+      path.join(this.templatePath(), '**', '!(_)*'),
       this.destinationPath(),
       this.properties
     );

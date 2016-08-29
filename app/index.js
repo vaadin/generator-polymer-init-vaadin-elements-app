@@ -47,10 +47,17 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
       fs.readFileSync(this.templatePath('.gitignore'))
     );
 
+    var staticFilesGlob = '*.png|*.ico';
+
     this.fs.copyTpl(
-      path.join(this.templatePath(), '**', '!(_)*'),
+      path.join(this.templatePath(), '**', `!(_*|${staticFilesGlob})`),
       this.destinationPath(),
       this.properties
+    );
+
+    this.fs.copy(
+      path.join(this.templatePath(), '**', staticFilesGlob),
+      this.destinationPath()
     );
   }
 

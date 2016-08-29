@@ -1,0 +1,22 @@
+{
+  "name": "<%= name %>",
+  "description": "<%= description %>",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.0",
+    "vaadin-core-elements": "Vaadin/vaadin-core-elements#^1.1.0",
+    "vaadin-charts": "Vaadin/vaadin-charts#^3.0.0"
+  },
+  "devDependencies": {
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.22",
+    "web-component-tester": "^4.0.0"
+  }
+}

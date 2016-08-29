@@ -1,7 +1,59 @@
 var generators = require('yeoman-generator');
+var chalk = require('chalk');
+var path = require('path');
 
-module.exports = generators.Base.extend({
-  constructor: function() {
-    generators.Base.apply(this, arguments);
+module.exports = class VaadinElementsApplicationGenerator extends generators.Base {
+  constructor(args, options) {
+    super(args, options);
+    this.properties = {};
   }
-});
+
+  initializing() {
+    // Dashify appname
+    this.appname = this.appname.replace(/\s+/g, '-');
+  }
+
+  prompting() {
+    return this.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Application name',
+        default: this.appname
+      }, {
+        type: 'input',
+        name: 'elementName',
+        message: 'Main element name',
+        default: this.appname + '-app',
+        validate: (name) => {
+          if (!name.includes('-')) {
+            this.log('Custom element name must contain a hyphen. Please try again.')
+            return false;
+          }
+          return true;
+        }
+      }, {
+        type: 'input',
+        name: 'description',
+        message: 'Brief description of the application' }
+    ]).then((answers) => this.properties = answers);
+  }
+
+  writing() {
+    this.fs.copyTpl(
+      path.join(this.templatePath(), '**', '?(.)!(_)*'),
+      this.destinationPath(),
+      this.properties
+    );
+  }
+
+  install() {
+    this.log(chalk.bold('\nProject generated!'));
+    this.log('Installing dependencies...');
+    this.installDependencies({npm: false});
+  }
+
+  end() {
+    this.log(chalk.bold('\nSetup complete!'));
+  }
+}

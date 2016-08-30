@@ -7,6 +7,7 @@ var fs = require('fs');
 module.exports = class VaadinElementsApplicationGenerator extends generators.Base {
   constructor(args, options) {
     super(args, options);
+    this.option('defaults');
     this.properties = {};
   }
 
@@ -16,17 +17,28 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
   }
 
   prompting() {
+    var defaultProperties = {
+      name: this.appname,
+      elementName: this.appname + '-app',
+      description: ''
+    };
+
+    if (this.options.defaults) {
+      this.properties = defaultProperties;
+      return;
+    }
+
     return this.prompt([
       {
         type: 'input',
         name: 'name',
         message: 'Application name',
-        default: this.appname
+        default: defaultProperties.name
       }, {
         type: 'input',
         name: 'elementName',
         message: 'Main element name',
-        default: this.appname + '-app',
+        default: defaultProperties.elementName,
         validate: (name) => {
           if (!name.includes('-')) {
             this.log('Custom element name must contain a hyphen. Please try again.')

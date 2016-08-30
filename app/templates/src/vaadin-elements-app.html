@@ -12,7 +12,7 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/vaadin-icons/vaadin-icons.html">
 
-<dom-module id="vaadin-elements-app">
+<dom-module id="<%= elementName %>">
   <template>
     <style>
       :host {
@@ -79,7 +79,7 @@
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="vaadin-icons:menu" drawer-toggle></paper-icon-button>
-            <div main-title>Vaadin Elements App</div>
+            <div main-title><%= name %></div>
           </app-toolbar>
         </app-header>
 
@@ -96,7 +96,7 @@
 
   <script>
     Polymer({
-      is: 'vaadin-elements-app',
+      is: '<%= elementName %>',
 
       properties: {
         page: {

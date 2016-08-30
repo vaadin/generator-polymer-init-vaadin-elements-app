@@ -10,8 +10,8 @@ This program is available under Apache License Version 2.0, available at https:/
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>Vaadin Elements App</title>
-    <meta name="description" content="Demo application with Vaadin Elements">
+    <title><%= name %></title>
+    <meta name="description" content="<%= description %>">
 
     <link rel="icon" href="/images/favicon.ico">
 
@@ -23,12 +23,12 @@ This program is available under Apache License Version 2.0, available at https:/
 
     <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Vaadin App">
+    <meta name="application-name" content="<%= name %>">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Vaadin App">
+    <meta name="apple-mobile-web-app-title" content="<%= name %>">
 
     <!-- Homescreen icons -->
     <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
@@ -76,7 +76,6 @@ This program is available under Apache License Version 2.0, available at https:/
           document.head.appendChild(script);
 
         } else {
-          console.log("else");
           onload();
         }
       })();
@@ -89,7 +88,7 @@ This program is available under Apache License Version 2.0, available at https:/
       }
     </script>
 
-    <link rel="import" href="/src/vaadin-elements-app.html">
+    <link rel="import" href="/src/<%= elementName %>.html">
 
     <style>
       body {
@@ -102,6 +101,6 @@ This program is available under Apache License Version 2.0, available at https:/
     </style>
   </head>
   <body>
-    <vaadin-elements-app></vaadin-elements-app>
+    <<%= elementName %>></<%= elementName %>>
   </body>
 </html>

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var path = require('path');
@@ -59,6 +59,12 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
     this.fs.copy(
       path.join(this.templatePath(), '**', staticFilesGlob),
       this.destinationPath()
+    );
+
+    // Rename main element's file name
+    this.fs.move(
+      path.join(this.destinationPath(), 'src', 'vaadin-elements-app.html'),
+      path.join(this.destinationPath(), 'src', this.properties.elementName + '.html')
     );
   }
 

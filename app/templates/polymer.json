@@ -1,6 +1,6 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/vaadin-elements-app.html",
+  "shell": "src/<%= elementName %>.html",
   "fragments": [
     "src/employee-list.html",
     "src/employee-sales.html"

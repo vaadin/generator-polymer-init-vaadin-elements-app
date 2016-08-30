@@ -1,3 +1,4 @@
+"use strict";
 var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var path = require('path');

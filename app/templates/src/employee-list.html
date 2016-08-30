@@ -1,7 +1,8 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
-<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid.html">
 <link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid.html">
 
 <dom-module id="employee-list">
   <template>
@@ -17,9 +18,15 @@
       }
     </style>
 
+    <iron-ajax
+      auto
+      url="employees.json"
+      handle-as="json"
+      last-response="{{_employees}}"></iron-ajax>
+
     <paper-material elevation="1">
       <vaadin-combo-box label="Filter by first name" items="[[_names]]" value="{{_filterValue}}"></vaadin-combo-box>
-      <vaadin-grid id="grid">
+      <vaadin-grid id="grid" items="{{_employees}}">
         <table>
           <colgroup>
             <col>
@@ -49,24 +56,6 @@
             return ['Artur', 'Patrik', 'Henrik', 'Teemu'];
           }
         },
-        _surnames: {
-          type: Array,
-          value: function() {
-            return ['Signell', 'Lehtinen', 'Ahlroos', 'Paul'];
-          }
-        },
-        _activities: {
-          type: Array,
-          value: function() {
-            return ['Design', 'Implement', 'Polish', 'Deliver']
-          }
-        },
-        _targets: {
-          type: Array,
-          value: function() {
-            return ['soup', 'Vaadin', 'dog', 'world peace'];
-          }
-        },
         _employees: {
           type: Array,
           value: function() {
@@ -78,22 +67,6 @@
           observer: '_filterValueChanged',
           value: ''
         }
-      },
-
-      ready: function() {
-        this._setEmployees();
-        this.$.grid.items = this._employees;
-      },
-
-      _setEmployees: function() {
-        for (var i = 0; i < 100; i++) {
-          var row = [this._generateRandom(this._names), this._generateRandom(this._surnames), this._generateRandom(this._activities), this._generateRandom(this._targets)];
-          this._employees.push(row);
-        }
-      },
-
-      _generateRandom: function(arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
       },
 
       _filterValueChanged: function() {

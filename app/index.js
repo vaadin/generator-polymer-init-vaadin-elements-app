@@ -69,8 +69,8 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
     );
 
     this.fs.copy(
-      path.join(this.templatePath(), '**', staticFilesGlob),
-      this.destinationPath()
+      path.join(this.templatePath(), 'images', '**'),
+      path.join(this.destinationPath(), 'images')
     );
 
     // Rename main element's file name

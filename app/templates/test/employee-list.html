@@ -21,16 +21,59 @@
 
     <script>
       suite('employee-list tests', function() {
-        var home;
+        var home, ajax, comboBox, grid;
 
         setup(function() {
           home = fixture('basic');
+          var domRoot = Polymer.dom(home.root);
+          ajax = domRoot.querySelector('iron-ajax');
+          comboBox = domRoot.querySelector('vaadin-combo-box');
+          grid = domRoot.querySelector('vaadin-grid');
         });
 
-        test('vaadin-combo-box has 4 items', function() {
-          var comboBox = Polymer.dom(home.root).querySelector('vaadin-combo-box');
-          assert.equal(comboBox.items.length, 4);
-        })
+        suite('combo-box', function() {
+          test('is upgraded', function() {
+            assert.equal(comboBox.is, 'vaadin-combo-box');
+          });
+
+          test('has 4 items', function() {
+            assert.equal(comboBox.items.length, 4);
+          });
+        });
+
+        suite('grid', function() {
+          setup(function(done) {
+            // Wait for the response if necessary
+            if (ajax.lastResponse === undefined) {
+              ajax.addEventListener('response', function() {
+                done();
+              });
+            } else {
+              done();
+            }
+          });
+
+          test('is upgraded', function() {
+            assert.equal(grid.is, 'vaadin-grid');
+          });
+
+          test('has all employees', function() {
+            assert.isAbove(grid.items.length, 0);
+            assert.equal(grid.items.length, home._employees.length);
+          });
+
+          test('has filtered employees after filter change', function() {
+            comboBox.value = comboBox.items[1];
+            var uniqueNamesInGrid = grid.items
+              .reduce(function(p, c) {
+                if (p.indexOf(c[0]) < 0) p.push(c[0]);
+                return p;
+              }, []);
+
+            assert.isBelow(grid.items.length, home._employees.length);
+            assert.sameMembers(uniqueNamesInGrid, [comboBox.value]);
+          });
+        });
       });
     </script>
   </body>

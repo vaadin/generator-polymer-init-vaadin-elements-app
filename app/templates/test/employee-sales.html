@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>employee-list</title>
+
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+
+    <!-- Import the element to test -->
+    <link rel="import" href="../src/employee-sales.html">
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <employee-sales></employee-sales>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('employee-list tests', function() {
+        var home, chart;
+
+        setup(function() {
+          home = fixture('basic');
+          var domRoot = Polymer.dom(home.root);
+          chart = domRoot.querySelector('vaadin-pie-chart');
+        });
+
+        suite('chart', function() {
+          test('is upgraded', function() {
+            assert.equal(chart.is, 'vaadin-pie-chart');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

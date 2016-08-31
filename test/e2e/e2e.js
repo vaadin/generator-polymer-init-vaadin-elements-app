@@ -2,11 +2,13 @@ var os = require('os');
 var fs = require('fs');
 var path = require('path');
 var rimraf = require('rimraf');
-var childProcess = require('child_process');
+var exec = require('child_process').exec;
 var yeoman  = require('yeoman-environment');
 
 var generatorPath = require.resolve('../../app');
-var appPath = fs.mkdtempSync(path.join(os.tmpdir(), 'vaadin-elements-'));
+var randomSuffix = (Math.random()*10e8|0).toString(36);
+var appPath = path.join(os.tmpdir(), 'vaadin-elements-' + randomSuffix);
+fs.mkdirSync(appPath);
 process.chdir(appPath);
 
 function cleanUp() {
@@ -21,8 +23,8 @@ function generateApp(callback) {
 }
 
 function runWct(callback) {
-  console.log('Running WCT ...');
-  var wctProcess = childProcess.exec(require.resolve('web-component-tester/bin/wct'), {}, callback);
+  console.log('Running WCT...');
+  var wctProcess = exec('node ' + require.resolve('web-component-tester/bin/wct'), {}, callback);
   wctProcess.stdout.pipe(process.stdout);
   wctProcess.stderr.pipe(process.stderr);
 }

@@ -4,8 +4,9 @@
   "description": "Progressive web application template with Polymer App Toolbox and Vaadin Elements",
   "main": "app/index.js",
   "scripts": {
-    "e2e": "node test/e2e/e2e.js",
-    "test": "mocha && npm run e2e"
+    "test:e2e": "node test/e2e/e2e.js",
+    "test:unit": "mocha",
+    "test": "npm run test:unit && npm run test:e2e"
   },
   "repository": {
     "type": "git",

@@ -69,6 +69,9 @@ In order to run the tests, run the following command in the project directory:
 This will run the unit tests, as well as generate and test the application in
 a temporary path.
 
+You can also run the unit tests and the application tests separately using the
+`$ npm run test:unit` and `$ npm run test:e2e` commands respectively.
+
 See also the [development instructions](https://github.com/vaadin/vaadin-core-elements#development) which apply to all Vaadin core elements.
 
 ## Contributing

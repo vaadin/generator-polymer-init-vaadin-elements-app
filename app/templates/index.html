@@ -64,19 +64,17 @@ This program is available under Apache License Version 2.0, available at https:/
         };
 
         if (
-          !'registerElement' in document
+          'registerElement' in document
           && 'import' in document.createElement('link')
           && 'content' in document.createElement('template')
         ) {
-
+          onload();
+        } else {
           var script = document.createElement('script');
           script.async = true;
           script.src = '/bower_components/webcomponentsjs/webcomponents-lite.min.js';
           script.onload = onload;
           document.head.appendChild(script);
-
-        } else {
-          onload();
         }
       })();
 

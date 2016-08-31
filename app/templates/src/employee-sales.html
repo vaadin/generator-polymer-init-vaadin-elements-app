@@ -17,7 +17,8 @@
     </style>
 
     <paper-material elevation="1">
-      <vaadin-pie-chart id="pie-with-legend">
+      <vaadin-pie-chart id="chart">
+        <chart background-color="transparent" height="400"></chart>
         <chart-title>Employee sales percentages, 2016</chart-title>
         <tooltip value-decimals="1" point-format="{series.name}: <b>{point.percentage:.1f}%</b>">
         </tooltip>
@@ -39,7 +40,23 @@
   </template>
   <script>
     Polymer({
-      is: 'employee-sales'
+      is: 'employee-sales',
+
+      properties: {
+        page: {
+          type: String,
+          observer: '_pageChanged'
+        }
+      },
+
+      _pageChanged: function() {
+        if (this.page === this.tagName.toLowerCase()) {
+          // https://github.com/vaadin/vaadin-charts/issues/137
+          this.async(function(){
+            this.$.chart.chart.reflow();
+          });
+        }
+      }
     });
   </script>
 </dom-module>

@@ -42,6 +42,6 @@ generateApp(function(err) {
       throw err;
     }
 
-    console.log('E2E test completed successfully!');
+    console.log('E2E tests completed successfully!');
   });
 });

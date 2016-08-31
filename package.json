@@ -30,7 +30,6 @@
   "devDependencies": {
     "mocha": "^3.0.2",
     "rimraf": "^2.5.4",
-    "web-component-tester": "^4.3.4",
     "yeoman-assert": "^2.2.1",
     "yeoman-environment": "^1.6.3",
     "yeoman-test": "^1.4.0"

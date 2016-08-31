@@ -26,7 +26,7 @@
 
     <paper-material elevation="1">
       <vaadin-combo-box label="Filter by first name" items="[[_names]]" value="{{_filterValue}}"></vaadin-combo-box>
-      <vaadin-grid id="grid" items="{{_employees}}">
+      <vaadin-grid id="grid">
         <table>
           <colgroup>
             <col>
@@ -64,12 +64,15 @@
         },
         _filterValue: {
           type: String,
-          observer: '_filterValueChanged',
           value: ''
         }
       },
 
-      _filterValueChanged: function() {
+      observers: [
+        '_applyFilter(_filterValue, _employees.splice)'
+      ],
+
+      _applyFilter: function() {
         this.$.grid.items = this._employees.filter(function(val) {
           if (this._filterValue) {
             return (val[0].toLowerCase()).indexOf(this._filterValue.toLowerCase()) > -1;

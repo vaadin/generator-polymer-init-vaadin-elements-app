@@ -1,0 +1,75 @@
+---
+title: Usage with Polymer CLI
+order: 1
+layout: page
+---
+
+[[generator-polymer-init-vaadin-elements-app.overview]]
+= Overview
+
+The [elementname]#generator-polymer-init-vaadin-elements-app# is a boilerplate template for Vaadin Elements applications.
+The Template is a fully featured Progressive Web Appliction, with offline support.
+
+= Usage
+
+Install polymer-cli and this package globally:
+
+[subs="normal"]
+----
+[prompt]#$# [command]#npm# install -g polymer-cli generator-polymer-init-vaadin-elements-app
+----
+
+Then you can create a new application with polymer init, using vaadin-elements-app template:
+
+[subs="normal"]
+----
+[prompt]#$# [command]#mkdir# [replaceable]#my-project#
+[prompt]#$# [command]#cd# [replaceable]#my-project#
+[prompt]#$# [command]#polymer# init vaadin-elements-app
+----
+
+= Start the development server
+
+This command serves the app at http://localhost:8080 and provides basic URL routing for the app:
+
+[subs="normal"]
+----
+[prompt]#$# [command]#polymer# serve
+----
+
+[[figure.vaadin-combo-box.overview]]
+.A screenshot of the template
+image::img/generator-polymer-init-vaadin-elements-app-overview.png[]
+
+= Test the application
+
+The template includes automated tests, which are located in the test/ directory. To run the tests,
+use this command:
+
+[subs="normal"]
+----
+[prompt]#$# [command]#polymer# test
+----
+
+= Build
+
+This command performs HTML, CSS, and JS minification on the application
+dependencies, and generates Service workers.
+The minified files are output to the build/unbundled folder, and are suitable
+for serving from a HTTP/2+Push compatible server.
+
+The command also creates a build/bundled folder,
+generated using fragment bundling, suitable for serving from non
+H2/push-compatible servers or to clients that do not support H2/Push.
+
+[subs="normal"]
+----
+[prompt]#$# [command]#polymer# build
+----
+
+= Test the build
+
+[subs="normal"]
+----
+[prompt]#$# [command]#polymer# serve build/bundled
+----

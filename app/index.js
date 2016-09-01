@@ -74,10 +74,12 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
     );
 
     // Rename main element's file name
-    this.fs.move(
-      path.join(this.destinationPath(), 'src', 'vaadin-elements-app.html'),
-      path.join(this.destinationPath(), 'src', this.properties.elementName + '.html')
-    );
+    if (this.properties.elementName !== 'vaadin-elements-app') {
+      this.fs.move(
+        path.join(this.destinationPath(), 'src', 'vaadin-elements-app.html'),
+        path.join(this.destinationPath(), 'src', this.properties.elementName + '.html')
+      );
+    }
   }
 
   install() {

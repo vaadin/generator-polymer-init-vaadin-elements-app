@@ -29,17 +29,10 @@
       <vaadin-grid id="grid">
         <table>
           <colgroup>
-            <col>
-            <col>
-            <col>
+            <col name="firstName">
+            <col name="lastName">
+            <col name="email">
           </colgroup>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Surname</th>
-              <th>Activity</th>
-            </tr>
-          </thead>
         </table>
       </vaadin-grid>
     </paper-material>
@@ -53,7 +46,7 @@
         _names: {
           type: Array,
           value: function() {
-            return ['Artur', 'Patrik', 'Henrik', 'Teemu'];
+            return ['Aiden', 'Jace', 'Michael', 'Sarah'];
           }
         },
         _employees: {
@@ -69,13 +62,13 @@
       },
 
       observers: [
-        '_applyFilter(_filterValue, _employees.splice)'
+        '_applyFilter(_filterValue, _employees)'
       ],
 
-      _applyFilter: function() {
-        this.$.grid.items = this._employees.filter(function(val) {
-          if (this._filterValue) {
-            return (val[0].toLowerCase()).indexOf(this._filterValue.toLowerCase()) > -1;
+      _applyFilter: function(filterValue, employees) {
+        this.$.grid.items = employees.filter(function(item) {
+          if (filterValue) {
+            return (item.firstName.toLowerCase()).indexOf(filterValue.toLowerCase()) > -1;
           } else {
             return true;
           }

@@ -7,9 +7,6 @@
     "node_modules",
     "bower_components"
   ],
-  "authors": [
-    "Vaadin Ltd"
-  ],
   "private": true,
   "dependencies": {
     "app-layout": "PolymerElements/app-layout#^0.10.0",

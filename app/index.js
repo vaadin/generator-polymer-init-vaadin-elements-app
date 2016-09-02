@@ -54,12 +54,6 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
   }
 
   writing() {
-    // Can not copy .gitignore because of npm, see: https://github.com/yeoman/generator/issues/812
-    this.fs.write(
-      this.destinationPath('.gitignore'),
-      fs.readFileSync(this.templatePath('.gitignore'))
-    );
-
     var staticFilesGlob = '*.png|*.ico';
 
     this.fs.copyTpl(

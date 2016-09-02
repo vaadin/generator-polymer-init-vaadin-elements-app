@@ -50,18 +50,4 @@ describe('vaadin-elements-app', function() {
       });
     });
   });
-
-  describe('.gitignore', function() {
-    it('should exist', function() {
-      assert.file('.gitignore');
-    });
-
-    it('should have node_modules', function() {
-      assert.fileContent('.gitignore', /node_modules/);
-    });
-
-    it('should have bower_components', function() {
-      assert.fileContent('.gitignore', /bower_components/);
-    });
-  });
 });

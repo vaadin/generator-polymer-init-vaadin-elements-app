@@ -1,0 +1,17 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/<%= elementName %>.html",
+  "fragments": [
+    "src/employee-list.html",
+    "src/employee-sales.html"
+  ],
+  "sourceGlobs": [
+   "src/**/*",
+   "images/**/*",
+   "bower.json"
+  ],
+  "includeDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}

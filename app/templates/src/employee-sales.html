@@ -1,0 +1,62 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/vaadin-charts/vaadin-pie-chart.html">
+
+<dom-module id="employee-sales">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-material {
+        background-color: white;
+        margin: 24px;
+        padding: 16px;
+      }
+    </style>
+
+    <paper-material elevation="1">
+      <vaadin-pie-chart id="chart">
+        <chart background-color="transparent" height="400"></chart>
+        <chart-title>Employee sales percentages, 2016</chart-title>
+        <tooltip value-decimals="1" point-format="{series.name}: <b>{point.percentage:.1f}%</b>">
+        </tooltip>
+        <plot-options>
+          <pie allow-point-select="true" show-in-legend="true" cursor="pointer">
+            <data-labels enabled="true" format="<b>{point.name}</b>:    {point.percentage} %">
+            </data-labels>
+          </pie>
+        </plot-options>
+
+        <data-series name="Browser share">
+          <data>
+            ["Aiden", 41.0], ["Austin", 30.8], ["Gabriella", 12.8], ["Jace", 8.5], ["Michael", 6.2], ["Sarah", 0.7],
+          </data>
+        </data-series>
+      </vaadin-pie-chart>
+    </paper-material>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'employee-sales',
+
+      properties: {
+        page: {
+          type: String,
+          observer: '_pageChanged'
+        }
+      },
+
+      _pageChanged: function() {
+        if (this.page === this.tagName.toLowerCase()) {
+          // https://github.com/vaadin/vaadin-charts/issues/137
+          this.async(function(){
+            this.$.chart.chart.reflow();
+          });
+        }
+      }
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,38 @@
+{
+  "name": "generator-polymer-init-vaadin-elements-app",
+  "version": "0.0.1",
+  "description": "Progressive web application template with Polymer App Toolbox and Vaadin Elements",
+  "main": "app/index.js",
+  "scripts": {
+    "test:e2e": "node test/e2e/e2e.js",
+    "test:unit": "mocha",
+    "test": "npm run test:unit && npm run test:e2e"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaadin/generator-polymer-init-vaadin-elements-app.git"
+  },
+  "keywords": [
+    "yeoman",
+    "polymer",
+    "polymer-cli",
+    "vaadin",
+    "vaadin-elements"
+  ],
+  "author": "Vaadin Ltd",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/vaadin/generator-polymer-init-vaadin-elements-app/issues"
+  },
+  "homepage": "https://github.com/vaadin/generator-polymer-init-vaadin-elements-app#readme",
+  "dependencies": {
+    "yeoman-generator": "^0.24.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.2",
+    "rimraf": "^2.5.4",
+    "yeoman-assert": "^2.2.1",
+    "yeoman-environment": "^1.6.3",
+    "yeoman-test": "^1.4.0"
+  }
+}

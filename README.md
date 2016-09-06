@@ -2,6 +2,8 @@
 
 Vaadin Elements application is a progressive web application template done with Polymer App Toolbox and Vaadin Elements.
 
+<img src="https://raw.githubusercontent.com/vaadin/generator-polymer-init-vaadin-elements-app/master/docs/img/generator-polymer-init-vaadin-elements-app-overview.png" width="100%" alt="Screenshot of the Vaadin Elements template application">
+
 ## Usage
 
 Install `polymer-cli` and this package globally:

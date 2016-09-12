@@ -3,6 +3,7 @@
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
 <link rel="import" href="../bower_components/vaadin-grid/vaadin-grid.html">
+<link rel="import" href="../bower_components/paper-styles/paper-styles-classes.html">
 
 <dom-module id="employee-list">
   <template>
@@ -24,9 +25,9 @@
       handle-as="json"
       last-response="{{_employees}}"></iron-ajax>
 
-    <paper-material elevation="1">
+    <paper-material elevation="1" class="fit layout vertical">
       <vaadin-combo-box label="Filter by first name" items="[[_names]]" value="{{_filterValue}}"></vaadin-combo-box>
-      <vaadin-grid id="grid">
+      <vaadin-grid id="grid" class="flex">
         <table>
           <colgroup>
             <col name="firstName">

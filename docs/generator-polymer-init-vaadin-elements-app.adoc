@@ -1,6 +1,6 @@
 ---
 title: Usage with Polymer CLI
-order: 1
+order: 3
 layout: page
 ---
 
@@ -8,18 +8,23 @@ layout: page
 = Overview
 
 The [elementname]#generator-polymer-init-vaadin-elements-app# is a boilerplate template for Vaadin Elements applications.
-The Template is a fully featured Progressive Web Appliction, with offline support.
+The Template is a fully featured Progressive Web Application (PWA), with offline support.
+It integrates with the link:https://github.com/Polymer/polymer-cli[Polymer-CLI] tool.
 
-= Usage
+= Installation
 
-Install polymer-cli and this package globally:
+We assume that you already have in your system `node.js`, `npm`, `bower` and `polymer-cli` tools.
+
+Install this package globally:
 
 [subs="normal"]
 ----
-[prompt]#$# [command]#npm# install -g polymer-cli generator-polymer-init-vaadin-elements-app
+[prompt]#$# [command]#npm# install -g generator-polymer-init-vaadin-elements-app
 ----
 
-Then you can create a new application with polymer init, using vaadin-elements-app template:
+= Create your Application
+
+Then you can create a new application with the polymer init command, and using vaadin-elements-app as template:
 
 [subs="normal"]
 ----
@@ -28,9 +33,12 @@ Then you can create a new application with polymer init, using vaadin-elements-a
 [prompt]#$# [command]#polymer# init vaadin-elements-app
 ----
 
+It will create a Polymer-CLI standard structure, for more details abut the structure, and all options and
+utilities included with the tool, please read the link:https://github.com/Polymer/polymer-cli[Polymer-CLI] documentation.
+
 = Start the development server
 
-This command serves the app at http://localhost:8080 and provides basic URL routing for the app:
+The following command serves the app at http://localhost:8080 and provides a basic URL routing for the application:
 
 [subs="normal"]
 ----
@@ -43,8 +51,8 @@ image::img/generator-polymer-init-vaadin-elements-app-overview.png[]
 
 = Test the application
 
-The template includes automated tests, which are located in the test/ directory. To run the tests,
-use this command:
+The template includes automated tests located in the test/ directory. To run the tests,
+use the following command:
 
 [subs="normal"]
 ----
@@ -53,14 +61,12 @@ use this command:
 
 = Build
 
-This command performs HTML, CSS, and JS minification on the application
-dependencies, and generates Service workers.
-The minified files are output to the build/unbundled folder, and are suitable
-for serving from a HTTP/2+Push compatible server.
+The following command performs HTML, CSS, and JS minimization of the application dependencies,
+and generates Service workers.
 
-The command also creates a build/bundled folder,
-generated using fragment bundling, suitable for serving from non
-H2/push-compatible servers or to clients that do not support H2/Push.
+It outputs two versions of the website, one for serving from a HTTP/2+Push compatible server in the
+`build/bundled` folder, and the other output bundles all dependencies in a single file, it is left
+in the `build/unbundled` folder, and it is compatible with any HTTP/1 web server.
 
 [subs="normal"]
 ----

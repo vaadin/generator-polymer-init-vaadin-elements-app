@@ -32,7 +32,7 @@ Then install the template package globally:
 [[generator-polymer-init-vaadin-elements-app.create]]
 == Creating the Application
 
-Create a new application with the `polymer init` command, passing the `vaadin-elements-app` argument:
+Create a new application with the `$ polymer init` command, passing the `vaadin-elements-app` argument:
 
 [subs="normal"]
 ----
@@ -58,7 +58,7 @@ The following command serves the app at http://localhost:8080 and provides a bas
 Now, you can modify application files with your favorite editor, and those changes will be
 automatically reloaded in the browser.
 
-[[figure.vaadin-combo-box.overview]]
+[[figure.generator-polymer-init-vaadin-elements-app.overview]]
 .A picture of the generated application
 image::img/generator-polymer-init-vaadin-elements-app-overview.png[]
 
@@ -84,13 +84,12 @@ and generates the service workers.
 [prompt]#$# [command]#polymer# build
 ----
 
-It outputs two versions of the website, one in the
-[filename]#build/bundled# folder for HTTP/2+Push compatible servers, and the other
+It outputs two variants of the application, one in the
+[filename]#build/unbundled# folder for HTTP/2+Push compatible servers, and the other
 output in the [filename]#build/bundled# folder that bundles all the dependencies in a single file.
 It is compatible with any classic web server.
 
-If you have installed the link:https://www.npmjs.com/package/serve[serve] HTTP server in your system,
-you can test the build by running the following command:
+You can test the build by running the following command:
 
 [subs="normal"]
 ----

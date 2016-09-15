@@ -59,7 +59,6 @@ Now, you can modify application files with your favorite editor, and those chang
 automatically reloaded in the browser.
 
 [[figure.generator-polymer-init-vaadin-elements-app.overview]]
-.A picture of the generated application
 image::img/generator-polymer-init-vaadin-elements-app-overview.png[]
 
 [[generator-polymer-init-vaadin-elements-app.test]]

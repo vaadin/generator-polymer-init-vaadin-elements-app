@@ -1,25 +1,39 @@
 ---
 title: Usage with Polymer CLI
-order: 1
+order: 3
 layout: page
 ---
 
-[[generator-polymer-init-vaadin-elements-app.overview]]
-= Overview
+[[elements.vaadin-elements-app]]
+= Usage with Polymer CLI
 
-The [elementname]#generator-polymer-init-vaadin-elements-app# is a boilerplate template for Vaadin Elements applications.
-The Template is a fully featured Progressive Web Appliction, with offline support.
+[[elements.vaadin-elements-app.overview]]
+== Overview
 
-= Usage
+The [elementname]#generator-polymer-init-vaadin-elements-app# is a boilerplate template for creating
+a new Polymer Application that uses Paper and Vaadin Elements.
 
-Install polymer-cli and this package globally:
+The template, which smoothly integrates with the
+link:https://github.com/Polymer/polymer-cli[Polymer-CLI] tool, produces a fully featured
+Progressive Web Application (PWA).
+
+[[elements.vaadin-elements-app.installation]]
+== Installation
+
+We assume that you already have installed in your system `node.js`, `npm`, `bower`, and `polymer-cli` tools.
+Otherwise, please follow the specific instructions of each tool in their website.
+
+Then install the template package globally:
 
 [subs="normal"]
 ----
-[prompt]#$# [command]#npm# install -g polymer-cli generator-polymer-init-vaadin-elements-app
+[prompt]#$# [command]#npm# install -g generator-polymer-init-vaadin-elements-app
 ----
 
-Then you can create a new application with polymer init, using vaadin-elements-app template:
+[[elements.vaadin-elements-app.create]]
+== Creating the Application
+
+Create a new application with the `$ polymer init` command, passing the `vaadin-elements-app` argument:
 
 [subs="normal"]
 ----
@@ -28,46 +42,54 @@ Then you can create a new application with polymer init, using vaadin-elements-a
 [prompt]#$# [command]#polymer# init vaadin-elements-app
 ----
 
-= Start the development server
+It will create a Polymer CLI project structure. In order to know more details abut the project structure,
+or to check more command options in the tool, please refer to the link:https://github.com/Polymer/polymer-cli[Polymer CLI]
+documentation.
 
-This command serves the app at http://localhost:8080 and provides basic URL routing for the app:
+[[elements.vaadin-elements-app.installation]]
+== Developing
+
+The following command serves the app at http://localhost:8080 and provides a basic URL routing for the application:
 
 [subs="normal"]
 ----
 [prompt]#$# [command]#polymer# serve
 ----
 
-[[figure.vaadin-combo-box.overview]]
-.A screenshot of the template
+Now, you can modify application files with your favorite editor, and those changes will be
+automatically reloaded in the browser.
+
+[[figure.generator-polymer-init-vaadin-elements-app.overview]]
 image::img/generator-polymer-init-vaadin-elements-app-overview.png[]
 
-= Test the application
+[[elements.vaadin-elements-app.test]]
+== Testing
 
-The template includes automated tests, which are located in the test/ directory. To run the tests,
-use this command:
+The application includes automated tests located in the [filename]#test# directory. To run the tests,
+run the following command:
 
 [subs="normal"]
 ----
 [prompt]#$# [command]#polymer# test
 ----
 
-= Build
+[[elements.vaadin-elements-app.build]]
+== Building
 
-This command performs HTML, CSS, and JS minification on the application
-dependencies, and generates Service workers.
-The minified files are output to the build/unbundled folder, and are suitable
-for serving from a HTTP/2+Push compatible server.
-
-The command also creates a build/bundled folder,
-generated using fragment bundling, suitable for serving from non
-H2/push-compatible servers or to clients that do not support H2/Push.
+The following command performs HTML, CSS, and JS minimization of the dependencies,
+and generates the service workers.
 
 [subs="normal"]
 ----
 [prompt]#$# [command]#polymer# build
 ----
 
-= Test the build
+It outputs two variants of the application, one in the
+[filename]#build/unbundled# folder for HTTP/2+Push compatible servers, and the other
+output in the [filename]#build/bundled# folder that bundles all the dependencies in a single file.
+It is compatible with any classic web server.
+
+You can test the build by running the following command:
 
 [subs="normal"]
 ----

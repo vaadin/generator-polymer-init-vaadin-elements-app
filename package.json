@@ -1,7 +1,7 @@
 {
   "name": "generator-polymer-init-vaadin-elements-app",
   "version": "0.1.0",
-  "description": "Progressive web application template with Polymer App Toolbox and Vaadin Elements",
+  "description": "Progressive web application template with Polymer starter-kit and Vaadin Elements",
   "main": "app/index.js",
   "scripts": {
     "test:e2e": "node test/e2e/e2e.js",

@@ -27,14 +27,22 @@
 
     <paper-material elevation="1" class="fit layout vertical">
       <vaadin-combo-box label="Filter by first name" items="[[_names]]" value="{{_filterValue}}"></vaadin-combo-box>
+
       <vaadin-grid id="grid" class="flex">
-        <table>
-          <colgroup>
-            <col name="firstName">
-            <col name="lastName">
-            <col name="email">
-          </colgroup>
-        </table>
+        <vaadin-grid-column>
+          <template class="header">First name</template>
+          <template>[[item.firstName]]</template>
+        </vaadin-grid-column>
+
+        <vaadin-grid-column>
+          <template class="header">Last name</template>
+          <template>[[item.lastName]]</template>
+        </vaadin-grid-column>
+
+        <vaadin-grid-column>
+          <template class="header">Email</template>
+          <template>[[item.email]]</template>
+        </vaadin-grid-column>
       </vaadin-grid>
     </paper-material>
 
@@ -50,12 +58,14 @@
             return ['Aiden', 'Jace', 'Michael', 'Sarah'];
           }
         },
+
         _employees: {
           type: Array,
           value: function() {
             return [];
           }
         },
+
         _filterValue: {
           type: String,
           value: ''

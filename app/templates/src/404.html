@@ -1,8 +1,16 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
 
 <dom-module id="app-404">
   <template>
-    <h1>404</h1>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+    </style>
+    <div class="card">
+      <h1>404, page not found...</h1>
+    </div>
   </template>
   <script>
     class App404 extends Polymer.Element {

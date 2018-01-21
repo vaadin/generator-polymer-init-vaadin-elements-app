@@ -9,8 +9,8 @@
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/vaadin-icons/vaadin-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/vaadin-lumo-styles/icons.html">
 
 <link rel="lazy-import" href="employee-list.html">
 <link rel="lazy-import" href="employee-sales.html">
@@ -20,32 +20,30 @@
   <template>
     <style>
       :host {
-        --app-primary-color: #00b4f0;
-        --app-secondary-color: #33383a;
         display: block;
       }
       app-drawer-layout:not([narrow]) [drawer-toggle] {
         display: none;
       }
       app-header {
-        color: #fff;
-        background-color: var(--app-primary-color);
+        color: var(--lumo-base-color);
+        background-color: var(--lumo-primary-color);
       }
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
+      app-header vaadin-button {
+        cursor: pointer;
       }
       .drawer-list {
-        margin: 0 20px;
+        margin: var(--lumo-space-tall-m);
       }
       .drawer-list a {
         display: block;
-        padding: 0 16px;
+        padding: 0 var(--lumo-space-m);
+        color: var(--lumo-secondary-text-color);
+        line-height: var(--lumo-size-m);
         text-decoration: none;
-        color: var(--app-secondary-color);
-        line-height: 40px;
       }
       .drawer-list a.iron-selected {
-        color: black;
+        color: var(--lumo-body-text-color);
         font-weight: bold;
       }
     </style>
@@ -77,7 +75,9 @@
 
         <app-header slot="header" condenses reveals effects="waterfall">
           <app-toolbar>
-            <paper-icon-button icon="vaadin-icons:menu" drawer-toggle></paper-icon-button>
+            <vaadin-button theme="icon" aria-label="Toggle menu" on-click="_drawerToggle" drawer-toggle>
+              <iron-icon icon="lumo:menu"></iron-icon>
+            </vaadin-button>
             <div main-title><%= name %></div>
           </app-toolbar>
         </app-header>
@@ -141,6 +141,9 @@
       }
       _showPage404() {
         this.page = '404';
+      }
+      _drawerToggle() {
+        this.$.drawer.toggle();
       }
     }
     window.customElements.define(<%= elementClass %>.is, <%= elementClass %>);

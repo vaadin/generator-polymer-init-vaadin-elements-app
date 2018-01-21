@@ -83,16 +83,23 @@ This program is available under Apache License Version 2.0, available at https:/
     <!-- Load your application shell -->
     <link rel="import" href="src/<%= elementName %>.html">
 
+    <!-- Load Application style modules -->
+    <link rel="import" href="bower_components/vaadin-lumo-styles/color.html">
+    <link rel="import" href="bower_components/vaadin-lumo-styles/sizing.html">
+    <link rel="import" href="bower_components/vaadin-lumo-styles/spacing.html">
+    <link rel="import" href="bower_components/vaadin-lumo-styles/style.html">
+    <link rel="import" href="bower_components/vaadin-lumo-styles/typography.html">
+
     <!-- Add any global styles for body, document, etc. -->
-    <style>
-      body {
-        margin: 0;
-        font-family: 'Roboto', 'Noto', sans-serif;
-        line-height: 1.5;
-        min-height: 100vh;
-        background-color: #e5e8e8;
-      }
-    </style>
+    <custom-style>
+      <style include="lumo-color lumo-typography">
+        body {
+          margin: 0;
+          min-height: 100vh;
+          background-color: var(--lumo-contrast-10pct);
+        }
+      </style>
+    </custom-style>
   </head>
   <body>
     <<%= elementName %>></<%= elementName %>>

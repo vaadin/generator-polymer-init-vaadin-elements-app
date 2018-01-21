@@ -1,22 +1,17 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/vaadin-charts/vaadin-pie-chart.html">
+<link rel="import" href="shared-styles.html">
 
 <dom-module id="employee-sales">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         display: block;
       }
-
-      paper-material {
-        background-color: white;
-        margin: 24px;
-        padding: 16px;
-      }
     </style>
 
-    <paper-material elevation="1">
+    <div class="card">
       <vaadin-pie-chart id="chart">
         <chart background-color="transparent" height="400"></chart>
         <chart-title>Employee sales percentages, 2018</chart-title>
@@ -31,7 +26,7 @@
 
         <data-series name="Employee share" data="[[chartData]]"></data-series>
       </vaadin-pie-chart>
-    </paper-material>
+    </div>
 
   </template>
   <script>

@@ -4,18 +4,13 @@
 <link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
 <link rel="import" href="../bower_components/vaadin-grid/vaadin-grid.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="shared-styles.html">
 
 <dom-module id="employee-list">
   <template>
-    <style include="iron-flex iron-positioning">
+    <style include="shared-styles">
       :host {
         display: block;
-      }
-
-      paper-material {
-        background-color: white;
-        margin: 24px;
-        padding: 16px;
       }
     </style>
 
@@ -25,7 +20,7 @@
       handle-as="json"
       last-response="{{_employees}}"></iron-ajax>
 
-    <paper-material elevation="1" class="fit layout vertical">
+    <div class="card">
       <vaadin-combo-box label="Filter by first name" items="[[_names]]" value="{{_filterValue}}"></vaadin-combo-box>
 
       <vaadin-grid id="grid" class="flex">
@@ -44,7 +39,7 @@
           <template>[[item.email]]</template>
         </vaadin-grid-column>
       </vaadin-grid>
-    </paper-material>
+    </div>
 
   </template>
   <script>

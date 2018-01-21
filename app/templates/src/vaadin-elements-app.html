@@ -11,6 +11,7 @@
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/vaadin-lumo-styles/icons.html">
+<link rel="import" href="../bower_components/vaadin-button/vaadin-button.html">
 
 <link rel="lazy-import" href="employee-list.html">
 <link rel="lazy-import" href="employee-sales.html">
@@ -30,7 +31,7 @@
         background-color: var(--lumo-primary-color);
       }
       app-header vaadin-button {
-        cursor: pointer;
+        color: var(--lumo-base-color);
       }
       .drawer-list {
         margin: var(--lumo-space-tall-m);
@@ -67,6 +68,7 @@
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="employee-list" href="/employee-list">Employee list</a>
           <a name="employee-sales" href="/employee-sales">Employee sales</a>
+          <a name="employee-new" href="/employee-new">New employee</a>
         </iron-selector>
       </app-drawer>
 
@@ -75,7 +77,7 @@
 
         <app-header slot="header" condenses reveals effects="waterfall">
           <app-toolbar>
-            <vaadin-button theme="icon" aria-label="Toggle menu" on-click="_drawerToggle" drawer-toggle>
+            <vaadin-button theme="icon" aria-label="Toggle menu" drawer-toggle>
               <iron-icon icon="lumo:menu"></iron-icon>
             </vaadin-button>
             <div main-title><%= name %></div>
@@ -89,6 +91,7 @@
             role="main">
           <employee-list name="employee-list"></employee-list>
           <employee-sales name="employee-sales"></employee-sales>
+          <employee-new name="employee-new"></employee-new>
           <app-404 name="404"></app-404>
         </iron-pages>
       </app-header-layout>
@@ -124,7 +127,7 @@
       _routePageChanged(page) {
         // If no page was found in the route data, page will be an empty string.
         // Default to 'employee-list' in that case.
-        this.page = page || 'emplyee-list';
+        this.page = page || 'employee-list';
         // Close a non-persistent drawer when the page & route are changed.
         if (!this.$.drawer.persistent) {
           this.$.drawer.close();

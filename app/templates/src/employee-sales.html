@@ -1,5 +1,4 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/vaadin-charts/vaadin-pie-chart.html">
 <link rel="import" href="shared-styles.html">
 
@@ -13,8 +12,8 @@
 
     <div class="card">
       <vaadin-pie-chart id="chart">
-        <chart background-color="transparent" height="400"></chart>
         <chart-title>Employee sales percentages, 2018</chart-title>
+        <chart background-color="transparent" height="400"></chart>
         <tooltip value-decimals="1" point-format="{series.name}: <b>{point.percentage:.1f}%</b>">
         </tooltip>
         <plot-options>

@@ -6,7 +6,6 @@
 
     <title>employee-list</title>
 
-    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../bower_components/web-component-tester/browser.js"></script>
 
     <!-- Import the element to test -->
@@ -20,58 +19,49 @@
     </test-fixture>
 
     <script>
-      suite('employee-list tests', function() {
-        var home, ajax, comboBox, grid;
+      suite('employee-list tests', () => {
+        let home, ajax, searchField, grid;
 
-        setup(function() {
+        setup(() => {
           home = fixture('basic');
-          var domRoot = Polymer.dom(home.root);
+          const domRoot = home.shadowRoot;
           ajax = domRoot.querySelector('iron-ajax');
-          comboBox = domRoot.querySelector('vaadin-combo-box');
+          searchField = domRoot.querySelector('vaadin-text-field');
           grid = domRoot.querySelector('vaadin-grid');
         });
 
-        suite('combo-box', function() {
-          test('is upgraded', function() {
-            assert.equal(comboBox.is, 'vaadin-combo-box');
-          });
-
-          test('has 4 items', function() {
-            assert.equal(comboBox.items.length, 4);
+        suite('text-field', () => {
+          test('empty initial value', () => {
+            assert.equal(searchField.value, '');
           });
         });
 
-        suite('grid', function() {
-          setup(function(done) {
+        suite('grid', () => {
+          setup(done => {
             // Wait for the response if necessary
             if (ajax.lastResponse === undefined) {
-              ajax.addEventListener('response', function() {
-                done();
-              });
+              ajax.addEventListener('response', () => done());
             } else {
               done();
             }
           });
 
-          test('is upgraded', function() {
-            assert.equal(grid.is, 'vaadin-grid');
-          });
-
-          test('has all employees', function() {
-            assert.isAbove(grid.items.length, 0);
+          test('has all employees', () => {
             assert.equal(grid.items.length, home._employees.length);
           });
 
-          test('has filtered employees after filter change', function() {
-            comboBox.value = comboBox.items[1];
+          test('has filtered employees after filter change', () => {
+            searchField.value = 'Aiden';
             var uniqueNamesInGrid = grid.items
-              .reduce(function(p, c) {
-                if (p.indexOf(c.firstName) < 0) p.push(c.firstName);
+              .reduce((p, c) => {
+                if (p.indexOf(c.firstName) < 0 || p.indexOf(c.lastName) < 0 || p.indexOf(c.email) < 0) {
+                  p.push(c.firstName);
+                }
                 return p;
               }, []);
 
             assert.isBelow(grid.items.length, home._employees.length);
-            assert.sameMembers(uniqueNamesInGrid, [comboBox.value]);
+            assert.sameMembers(uniqueNamesInGrid, [searchField.value]);
           });
         });
       });

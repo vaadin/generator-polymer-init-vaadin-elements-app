@@ -4,9 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>employee-list</title>
+    <title>employee-sales</title>
 
-    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../bower_components/web-component-tester/browser.js"></script>
 
     <!-- Import the element to test -->
@@ -20,18 +19,18 @@
     </test-fixture>
 
     <script>
-      suite('employee-list tests', function() {
-        var home, chart;
+      suite('employee-sales tests', function() {
+        let dataSeries, home;
 
         setup(function() {
           home = fixture('basic');
-          var domRoot = Polymer.dom(home.root);
-          chart = domRoot.querySelector('vaadin-pie-chart');
+          const domRoot = home.shadowRoot;
+          dataSeries = domRoot.querySelector('data-series');
         });
 
         suite('chart', function() {
-          test('is upgraded', function() {
-            assert.equal(chart.is, 'vaadin-pie-chart');
+          test('has data', function() {
+            assert.equal(dataSeries.data.length, 6);
           });
         });
       });

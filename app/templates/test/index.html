@@ -10,12 +10,17 @@
   </head>
   <body>
     <script>
+      WCT._config.environmentScripts.push('webcomponentsjs/webcomponents-lite.js');
+
       WCT.loadSuites([
-        'employee-list.html?dom=shady',
-        'employee-list.html?dom=shadow',
-        'employee-sales.html?dom=shady',
-        'employee-sales.html?dom=shadow'
-      ]);
+        'employee-list.html',
+        'employee-sales.html',
+        'employee-new.html'
+        ]
+          .reduce(function(suites, suite) {
+            return suites.concat([suite, `${suite}?wc-shadydom=true`]);
+          }, [])
+      );
     </script>
   </body>
 </html>

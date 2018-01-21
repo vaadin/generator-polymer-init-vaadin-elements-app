@@ -1,4 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
@@ -48,43 +48,42 @@
 
   </template>
   <script>
-    Polymer({
-      is: 'employee-list',
+    class EmployeeList extends Polymer.Element {
+      static get is() { return 'employee-list'; }
+      static get properties() {
+        return {
+          _names: {
+            type: Array,
+            value: function() {
+              return ['Aiden', 'Jace', 'Michael', 'Sarah'];
+            }
+          },
+          _employees: {
+            type: Array,
+            value: function() {
+              return [];
+            }
+          },
 
-      properties: {
-        _names: {
-          type: Array,
-          value: function() {
-            return ['Aiden', 'Jace', 'Michael', 'Sarah'];
+          _filterValue: {
+            type: String,
+            value: ''
           }
-        },
-
-        _employees: {
-          type: Array,
-          value: function() {
-            return [];
-          }
-        },
-
-        _filterValue: {
-          type: String,
-          value: ''
         }
-      },
-
-      observers: [
-        '_applyFilter(_filterValue, _employees)'
-      ],
-
-      _applyFilter: function(filterValue, employees) {
-        this.$.grid.items = employees.filter(function(item) {
-          if (filterValue) {
-            return (item.firstName.toLowerCase()).indexOf(filterValue.toLowerCase()) > -1;
-          } else {
-            return true;
-          }
-        }.bind(this));
       }
-    });
+      static get observers() {
+        return [
+          '_applyFilter(_filterValue, _employees)',
+        ];
+      }
+      _applyFilter(filterValue, employees) {
+        if (employees) {
+          this.$.grid.items = employees.filter(item => (
+            filterValue ? (item.firstName.toLowerCase()).indexOf(filterValue.toLowerCase()) > -1 : true
+          ));
+        }
+      }
+    }
+    window.customElements.define(EmployeeList.is, EmployeeList);
   </script>
 </dom-module>

@@ -1,6 +1,6 @@
 <!--
 @license
-Copyright (c) 2016 Vaadin Ltd.
+Copyright (c) 2018 Vaadin Ltd.
 This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
 -->
 
@@ -8,10 +8,21 @@ This program is available under Apache License Version 2.0, available at https:/
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="generator" content="Vaadin Elements App">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta name="description" content="<%= description %>">
 
     <title><%= name %></title>
-    <meta name="description" content="<%= description %>">
+
+    <!--
+      The `<base>` tag below is present to support two advanced deployment options:
+      1) Differential serving. 2) Serving from a non-root path.
+      Instead of manually editing the `<base>` tag yourself, you should generally either:
+      a) Add a `basePath` property to the build configuration in your `polymer.json`.
+      b) Use the `--base-path` command-line option for `polymer build`.
+      Note: If you intend to serve from a non-root path, see [polymer-root-path] below.
+    -->
+    <base href="/">
 
     <link rel="icon" href="/images/favicon.ico">
 
@@ -43,51 +54,36 @@ This program is available under Apache License Version 2.0, available at https:/
     <meta name="msapplication-tap-highlight" content="no">
 
     <script>
-      // Setup Polymer options
-      window.Polymer = {
-        dom: 'shadow',
-        lazyRegister: true
-      };
-
-      // Load webcomponentsjs polyfill if Web Components aren't supported
-      (function() {
-        'use strict';
-
-        var onload = function() {
-          // For native Imports, manually fire WebComponentsReady so user code
-          // can use the same code path for native and polyfill'd imports.
-          if (!window.HTMLImports) {
-            document.dispatchEvent(
-              new CustomEvent('WebComponentsReady', {bubbles: true})
-            );
-          }
-        };
-
-        if (
-          'registerElement' in document
-          && 'import' in document.createElement('link')
-          && 'content' in document.createElement('template')
-        ) {
-          onload();
-        } else {
-          var script = document.createElement('script');
-          script.async = true;
-          script.src = '/bower_components/webcomponentsjs/webcomponents-lite.min.js';
-          script.onload = onload;
-          document.head.appendChild(script);
-        }
-      })();
-
-      // Load pre-caching Service Worker
+      /**
+      * [polymer-root-path]
+      *
+      * By default, we set `Polymer.rootPath` to the server root path (`/`).
+      * Leave this line unchanged if you intend to serve your app from the root
+      * path (e.g., with URLs like `my.domain/` and `my.domain/view1`).
+      *
+      * If you intend to serve your app from a non-root path (e.g., with URLs
+      * like `my.domain/<%= elementName %>/` and `my.domain/<%= elementName %>/view1`), edit this line
+      * to indicate the path from which you'll be serving, including leading
+      * and trailing slashes (e.g., `/<%= elementName %>/`).
+      */
+      window.Polymer = {rootPath: '/'};
+      // Load and register pre-caching Service Worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/service-worker.js');
+          navigator.serviceWorker.register('service-worker.js', {
+            scope: Polymer.rootPath,
+          });
         });
       }
     </script>
 
-    <link rel="import" href="/src/<%= elementName %>.html">
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
+    <!-- Load your application shell -->
+    <link rel="import" href="src/<%= elementName %>.html">
+
+    <!-- Add any global styles for body, document, etc. -->
     <style>
       body {
         margin: 0;
@@ -100,5 +96,8 @@ This program is available under Apache License Version 2.0, available at https:/
   </head>
   <body>
     <<%= elementName %>></<%= elementName %>>
+    <noscript>
+      Please enable JavaScript to view this website.
+    </noscript>
   </body>
 </html>

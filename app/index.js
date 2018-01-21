@@ -56,6 +56,10 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
   writing() {
     var staticFilesGlob = '*.png|*.ico';
 
+    this.properties.elementClass = this.properties.elementName
+      .replace(/-([a-z])/g, g => g[1].toUpperCase())
+      .replace(/[a-z]/, g => g.toUpperCase());
+
     this.fs.copyTpl(
       path.join(this.templatePath(), '**', `!(_*|${staticFilesGlob})`),
       this.destinationPath(),

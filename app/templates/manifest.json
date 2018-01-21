@@ -1,7 +1,7 @@
 {
   "name": "<%= name %>",
   "short_name": "<%= name %>",
-  "start_url": "/?homescreen=1",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#00b4f0",
   "background_color": "#00b4f0",

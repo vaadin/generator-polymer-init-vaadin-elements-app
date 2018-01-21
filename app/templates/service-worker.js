@@ -1,1 +1,1 @@
-console.info('Service workers will be generated at build time.');
+console.info('Service worker will be generated at build time.');

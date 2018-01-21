@@ -1,8 +1,17 @@
 module.exports = {
   staticFileGlobs: [
-    '/index.html',
-    '/manifest.json',
-    '/bower_components/webcomponentsjs/webcomponents-lite.min.js'
+    'bower_components/webcomponentsjs/webcomponents-loader.js',
+    'manifest.json',
   ],
-  navigateFallback: '/index.html'
+  runtimeCaching: [
+    {
+      urlPattern: /\/bower_components\/webcomponentsjs\/.*.js/,
+      handler: 'fastest',
+      options: {
+        cache: {
+          name: 'webcomponentsjs-polyfills-cache',
+        },
+      },
+    },
+  ],
 };

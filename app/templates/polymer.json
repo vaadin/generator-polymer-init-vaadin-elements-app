@@ -4,7 +4,8 @@
   "fragments": [
     "src/employee-list.html",
     "src/employee-sales.html",
-    "src/employee-404.html"
+    "src/employee-new.html",
+    "src/404.html"
   ],
   "sources": [
    "src/**/*",
@@ -15,7 +16,6 @@
     "manifest.json",
     "bower_components/webcomponentsjs/*.js",
     "!bower_components/webcomponentsjs/gulpfile.js",
-    "bower_components/vaadin-lumo-styles/*.html",
     "employees.json"
   ],
   "lint": {

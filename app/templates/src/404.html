@@ -6,6 +6,7 @@
     <style include="shared-styles">
       :host {
         display: block;
+        background: transparent;
       }
     </style>
     <div class="card">
@@ -14,7 +15,9 @@
   </template>
   <script>
     class App404 extends Polymer.Element {
-      static get is() { return 'app-404'; }
+      static get is() {
+        return 'app-404';
+      }
     }
     window.customElements.define(App404.is, App404);
   </script>

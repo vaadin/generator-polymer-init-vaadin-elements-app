@@ -10,6 +10,7 @@
     <style include="shared-styles">
       :host {
         display: block;
+        background: transparent;
       }
       vaadin-grid, vaadin-text-field {
         width: 100%;
@@ -48,7 +49,9 @@
   </template>
   <script>
     class EmployeeList extends Polymer.Element {
-      static get is() { return 'employee-list'; }
+      static get is() {
+        return 'employee-list';
+      }
       static get properties() {
         return {
           _employees: {
@@ -62,7 +65,7 @@
             type: String,
             value: ''
           }
-        }
+        };
       }
       static get observers() {
         return [
@@ -72,11 +75,11 @@
       _applyFilter(filterValue, employees) {
         if (employees && filterValue) {
           const matchSearch = value => {
-            return (value.toLowerCase()).indexOf(filterValue.toLowerCase()) > -1
-          }
+            return (value.toLowerCase()).indexOf(filterValue.toLowerCase()) > -1;
+          };
           
           this.$.grid.items = employees.filter(item => (
-            matchSearch(item.firstName) || matchSearch(item.lastName) || matchSearch(item.email) 
+            matchSearch(item.firstName) || matchSearch(item.lastName) || matchSearch(item.email)
           ));
         } else {
           this.$.grid.items = employees;

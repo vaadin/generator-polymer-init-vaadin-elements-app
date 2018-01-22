@@ -12,14 +12,16 @@
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/vaadin-lumo-styles/icons.html">
 <link rel="import" href="../bower_components/vaadin-button/vaadin-button.html">
+<link rel="import" href="shared-styles.html">
 
 <link rel="lazy-import" href="employee-list.html">
 <link rel="lazy-import" href="employee-sales.html">
+<link rel="lazy-import" href="employee-new.html">
 <link rel="lazy-import" href="404.html">
 
 <dom-module id="<%= elementName %>">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         display: block;
       }
@@ -104,7 +106,9 @@
     Polymer.setPassiveTouchGestures(true);
 
     class <%= elementClass %> extends Polymer.Element {
-      static get is() { return '<%= elementName %>'; }
+      static get is() {
+        return '<%= elementName %>';
+      }
       static get properties() {
         return {
           page: {
@@ -137,10 +141,11 @@
         // Load page import on demand. Show 404 page if fails
         const resolvedPageUrl = this.resolveUrl(page + '.html');
         Polymer.importHref(
-            resolvedPageUrl,
-            null,
-            this._showPage404.bind(this),
-            true);
+          resolvedPageUrl,
+          null,
+          this._showPage404.bind(this),
+          true
+        );
       }
       _showPage404() {
         this.page = '404';

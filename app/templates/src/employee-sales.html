@@ -7,6 +7,7 @@
     <style include="shared-styles">
       :host {
         display: block;
+        background: transparent;
       }
     </style>
 
@@ -30,23 +31,25 @@
   </template>
   <script>
     class EmployeeSales extends Polymer.Element {
-      static get is() { return 'employee-sales'; }
+      static get is() {
+        return 'employee-sales';
+      }
       static get properties() {
         return {
           chartData: {
             type: Array,
             value: function() {
               return [
-                ["Aiden", 41.0], 
-                ["Austin", 30.8], 
-                ["Gabriella", 12.8], 
-                ["Jace", 8.5], 
-                ["Michael", 6.2], 
-                ["Sarah", 0.7]
-              ]
+                ['Aiden', 41.0], 
+                ['Austin', 30.8], 
+                ['Gabriella', 12.8], 
+                ['Jace', 8.5], 
+                ['Michael', 6.2], 
+                ['Sarah', 0.7]
+              ];
             }
           }
-        }
+        };
       }
     }
     window.customElements.define(EmployeeSales.is, EmployeeSales);

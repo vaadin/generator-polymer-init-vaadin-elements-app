@@ -23,6 +23,7 @@
     <style include="shared-styles">
       :host {
         display: block;
+        background: transparent;
       }
     </style>
 
@@ -135,7 +136,9 @@
   
   <script>
     class EmployeeNew extends Polymer.Element {
-      static get is() { return 'employee-new'; }
+      static get is() {
+        return 'employee-new';
+      }
       static get properties() {
         return {
           dietarys: {
@@ -147,7 +150,7 @@
                 'Lacto-Ovo Vegetarians',
                 'Pescetarians',
                 'Other'
-              ]
+              ];
             }
           },
           dialogOpen: {
@@ -159,6 +162,9 @@
           },
           formInvalid: {
             type: Boolean
+          },
+          radioValue: {
+            type: String
           }
         };
       }

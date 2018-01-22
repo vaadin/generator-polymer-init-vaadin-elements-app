@@ -16,10 +16,10 @@
         'employee-list.html',
         'employee-sales.html',
         'employee-new.html'
-        ]
-          .reduce(function(suites, suite) {
-            return suites.concat([suite, `${suite}?wc-shadydom=true`]);
-          }, [])
+      ]
+        .reduce(function(suites, suite) {
+          return suites.concat([suite, `${suite}?wc-shadydom=true`]);
+        }, [])
       );
     </script>
   </body>

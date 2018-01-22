@@ -2,12 +2,12 @@
 
 Vaadin Elements application is a progressive web application template done with Polymer App Toolbox and Vaadin Elements.
 
-<img src="https://raw.githubusercontent.com/vaadin/generator-polymer-init-vaadin-elements-app/master/docs/img/generator-polymer-init-vaadin-elements-app-overview.png" width="100%" alt="Screenshot of the Vaadin Elements template application">
+<img src="https://raw.githubusercontent.com/vaadin/generator-polymer-init-vaadin-elements-app/master/screenshot.png" width="100%" alt="Screenshot of the Vaadin Elements Application">
 
 ## Usage
 
 Follow the steps in the
-[Vaadin Elements Application Template](https://github.com/vaadin/generator-polymer-init-vaadin-elements-app/blob/prepare-doc/docs/generator-polymer-init-vaadin-elements-app.adoc)
+[Vaadin Elements Application Template](https://github.com/vaadin/generator-polymer-init-vaadin-elements-app/blob/master/app/templates/README.md)
 tutorial to create and run your application.
 
 ## Development
@@ -46,7 +46,7 @@ You can also run the unit tests and the application tests separately using the
 
 ## Contributing
 
-See the [contribution instructions](https://github.com/vaadin/vaadin-core-elements#contributing) which apply to this project as well.
+See the [contribution instructions](https://github.com/vaadin/vaadin-core#contributing) which apply to this project as well.
 
 ## License
 

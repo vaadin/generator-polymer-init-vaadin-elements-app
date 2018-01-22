@@ -41,12 +41,16 @@ describe('vaadin-elements-app', function() {
         assert.ok(bowerJsonContent.dependencies['polymer']);
       });
 
-      it('should list vaadin-core-elements', function() {
-        assert.ok(bowerJsonContent.dependencies['vaadin-core-elements']);
+      it('should list vaadin-core', function() {
+        assert.ok(bowerJsonContent.dependencies['vaadin-core']);
       });
 
       it('should list vaadin-charts', function() {
         assert.ok(bowerJsonContent.dependencies['vaadin-charts']);
+      });
+
+      it('should list vaadin-lumo-styles', function() {
+        assert.ok(bowerJsonContent.dependencies['vaadin-lumo-styles']);
       });
     });
   });

@@ -17,28 +17,8 @@
     "iron-pages": "PolymerElements/iron-pages#^2.0.0",
     "iron-selector": "PolymerElements/iron-selector#^2.0.0",
     "iron-form": "PolymerElements/iron-form#^2.0.0",
-
-    "vaadin-button": "#master",
-    "vaadin-checkbox": "#master",
-    "vaadin-combo-box": "#master",
-    "vaadin-context-menu": "#master",
-    "vaadin-date-picker": "#master",
-    "vaadin-dialog": "#master",
-    "vaadin-dropdown-menu": "#master",
-    "vaadin-form-layout": "#master",
-    "vaadin-grid": "#master",
-    "vaadin-icons": "#master",
-    "vaadin-item": "#master",
-    "vaadin-list-box": "#master",
-    "vaadin-ordered-layout": "#master",
-    "vaadin-progress-bar": "#master",
-    "vaadin-radio-button": "#master",
-    "vaadin-split-layout": "#master",
-    "vaadin-tabs": "#master",
-    "vaadin-text-field": "#master",
-    "vaadin-upload": "#master",
-    "vaadin-notification": "#master",
-    "vaadin-lumo-styles": "#master"
+    "vaadin-core": "vaadin/vaadin-core#10.0.0-alpha14",
+    "vaadin-lumo-styles": "vaadin/vaadin-lumo-styles#1.0.0-alpha3"
   },
   "resolutions": {
     "polymer": "^2.0.0"

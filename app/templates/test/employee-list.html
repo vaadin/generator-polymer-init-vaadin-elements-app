@@ -20,19 +20,19 @@
 
     <script>
       suite('employee-list tests', () => {
-        let home, ajax, searchField, grid;
+        let home, ajax, grid;
 
         setup(() => {
           home = fixture('basic');
           const domRoot = home.shadowRoot;
           ajax = domRoot.querySelector('iron-ajax');
-          searchField = domRoot.querySelector('vaadin-text-field');
           grid = domRoot.querySelector('vaadin-grid');
         });
 
-        suite('text-field', () => {
+        suite('filters', () => {
           test('empty initial value', () => {
-            assert.equal(searchField.value, '');
+            assert.equal(home._filterFirstName, '');
+            assert.equal(home._filterLastName, '');
           });
         });
 
@@ -51,17 +51,12 @@
           });
 
           test('has filtered employees after filter change', () => {
-            searchField.value = 'Aiden';
-            var uniqueNamesInGrid = grid.items
-              .reduce((p, c) => {
-                if (p.indexOf(c.firstName) < 0 || p.indexOf(c.lastName) < 0 || p.indexOf(c.email) < 0) {
-                  p.push(c.firstName);
-                }
-                return p;
-              }, []);
+            home._filterFirstName = 'Aiden';
+            const uniqueNamesInGrid = grid.items
+              .filter(item => item.firstName.includes(home._filterFirstName))
+              .map(item => item.firstName);
 
-            assert.isBelow(grid.items.length, home._employees.length);
-            assert.sameMembers(uniqueNamesInGrid, [searchField.value]);
+            assert.sameMembers(uniqueNamesInGrid, [home._filterFirstName]);
           });
         });
       });

@@ -2,7 +2,7 @@
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/vaadin-text-field/vaadin-text-field.html">
 <link rel="import" href="../bower_components/vaadin-grid/vaadin-grid.html">
-<link rel="import" href="../bower_components/vaadin-ordered-layout/vaadin-vertical-layout.html">
+<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid-filter.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="employee-list">
@@ -11,9 +11,6 @@
       :host {
         display: block;
         background: transparent;
-      }
-      vaadin-grid, vaadin-text-field {
-        width: 100%;
       }
     </style>
 
@@ -24,28 +21,31 @@
       last-response="{{_employees}}"></iron-ajax>
 
     <div class="card">
-      <vaadin-vertical-layout>
-        <vaadin-text-field placeholder="Search" value="{{_filterValue}}"></vaadin-text-field>
+      <vaadin-grid items="[[_employees]]">
+        <vaadin-grid-column>
+          <template class="header">
+            <vaadin-grid-filter aria-label="First Name" path="firstName" value="[[_filterFirstName]]">
+              <vaadin-text-field slot="filter" placeholder="First Name" value="{{_filterFirstName}}" focus-target></vaadin-text-field>
+            </vaadin-grid-filter>
+          </template>
+          <template>[[item.firstName]]</template>
+        </vaadin-grid-column>
 
-        <vaadin-grid id="grid" class="flex">
-          <vaadin-grid-column>
-            <template class="header">First name</template>
-            <template>[[item.firstName]]</template>
-          </vaadin-grid-column>
-  
-          <vaadin-grid-column>
-            <template class="header">Last name</template>
-            <template>[[item.lastName]]</template>
-          </vaadin-grid-column>
-  
-          <vaadin-grid-column>
-            <template class="header">Email</template>
-            <template>[[item.email]]</template>
-          </vaadin-grid-column>
-        </vaadin-grid>
-      </vaadin-vertical-layout>
+        <vaadin-grid-column>
+          <template class="header">
+            <vaadin-grid-filter aria-label="Last Name" path="lastName" value="[[_filterLastName]]">
+              <vaadin-text-field slot="filter" placeholder="Last Name" value="{{_filterLastName}}" focus-target></vaadin-text-field>
+            </vaadin-grid-filter>
+          </template>
+          <template>[[item.lastName]]</template>
+        </vaadin-grid-column>
+
+        <vaadin-grid-column>
+          <template class="header">Email</template>
+          <template>[[item.email]]</template>
+        </vaadin-grid-column>
+      </vaadin-grid>
     </div>
-
   </template>
   <script>
     class EmployeeList extends Polymer.Element {
@@ -60,30 +60,15 @@
               return [];
             }
           },
-
-          _filterValue: {
+          _filterFirstName: {
+            type: String,
+            value: ''
+          },
+          _filterLastName: {
             type: String,
             value: ''
           }
         };
-      }
-      static get observers() {
-        return [
-          '_applyFilter(_filterValue, _employees)',
-        ];
-      }
-      _applyFilter(filterValue, employees) {
-        if (employees && filterValue) {
-          const matchSearch = value => {
-            return (value.toLowerCase()).indexOf(filterValue.toLowerCase()) > -1;
-          };
-          
-          this.$.grid.items = employees.filter(item => (
-            matchSearch(item.firstName) || matchSearch(item.lastName) || matchSearch(item.email)
-          ));
-        } else {
-          this.$.grid.items = employees;
-        }
       }
     }
     window.customElements.define(EmployeeList.is, EmployeeList);

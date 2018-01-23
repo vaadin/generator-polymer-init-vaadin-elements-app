@@ -47,17 +47,17 @@
                   </template>
                 </vaadin-dropdown-menu>
               </vaadin-form-item>
-  
+
               <vaadin-form-item>
                 <label slot="label">First Name</label>
                 <vaadin-text-field required error-message="Please enter first name" class="full-width"></vaadin-text-field>
               </vaadin-form-item>
-  
+
               <vaadin-form-item>
                 <label slot="label">Last Name</label>
                 <vaadin-text-field required error-message="Please enter last name" class="full-width"></vaadin-text-field>
               </vaadin-form-item>
-  
+
               <vaadin-form-item>
                 <label slot="label">Email</label>
                 <vaadin-text-field required error-message="Please enter email" class="full-width"></vaadin-text-field>
@@ -67,17 +67,17 @@
                 <label slot="label">Birth date</label>
                 <vaadin-date-picker class="full-width"></vaadin-date-picker>
               </vaadin-form-item>
-  
+
               <vaadin-form-item>
                 <label slot="label">Dietary Restrictions</label>
                 <vaadin-combo-box class="full-width" items="[[dietarys]]"></vaadin-combo-box>
               </vaadin-form-item>
-  
+
               <vaadin-form-item>
                 <label slot="label">Add profile picture</label>
                 <vaadin-upload class="full-width" max-files="1"></vaadin-upload>
               </vaadin-form-item>
-  
+
               <vaadin-form-item>
                 <label slot="label">Preferred language</label>
                 <vaadin-radio-group value="{{radioValue}}">
@@ -86,26 +86,26 @@
                   <vaadin-radio-button value="de">Deutsch</vaadin-radio-button>
                 </vaadin-radio-group>
               </vaadin-form-item>
-  
+
               <vaadin-form-item colspan="2">
                 <label slot="label">Free word (allergies)</label>
                 <vaadin-text-area class="full-width"></vaadin-text-area>
               </vaadin-form-item>
-  
+
               <vaadin-form-item colspan="2">
                 <vaadin-checkbox checked="{{_canSubmit}}">I have read the <a href on-click="toggleDialog">terms and conditions</a></vaadin-checkbox>
               </vaadin-form-item>
-  
+
               <vaadin-form-item colspan="2">
                 <vaadin-button disabled$="[[!_canSubmit]]" on-click="_submitForm">Submit</vaadin-button>
               </vaadin-form-item>
-  
+
             </vaadin-form-layout>
           </vaadin-vertical-layout>
         </form>
       </iron-form>
     </div>
-  
+
     <vaadin-notification opened="[[fieldSubmitted]]" duration="4000">
       <template>
         <h3>Submitted</h3>
@@ -133,7 +133,7 @@
     </vaadin-dialog>
 
   </template>
-  
+
   <script>
     class EmployeeNew extends Polymer.Element {
       static get is() {
@@ -157,15 +157,9 @@
             type: Boolean,
             value: false
           },
-          fieldSubmitted: {
-            type: Boolean
-          },
-          formInvalid: {
-            type: Boolean
-          },
-          radioValue: {
-            type: String
-          }
+          fieldSubmitted: Boolean,
+          formInvalid: Boolean,
+          radioValue: String
         };
       }
       toggleDialog(e) {

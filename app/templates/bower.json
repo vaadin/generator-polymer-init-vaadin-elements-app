@@ -21,7 +21,7 @@
     "vaadin-lumo-styles": "vaadin/vaadin-lumo-styles#1.0.0-alpha3"
   },
   "resolutions": {
-    "vaadin-lumo-styles": "vaadin/vaadin-lumo-styles#1.0.0-alpha3"
+    "vaadin-lumo-styles": "1.0.0-alpha3"
   },
   "devDependencies": {
     "web-component-tester": "^6.0.0"

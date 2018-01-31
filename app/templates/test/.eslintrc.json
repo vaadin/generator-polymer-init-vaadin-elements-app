@@ -1,0 +1,10 @@
+{
+  "globals": {
+    "WCT": false,
+    "suite": false,
+    "setup": false,
+    "fixture": false,
+    "test": false,
+    "assert": false
+  }
+}

@@ -1,41 +1,42 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../bower_components/paper-material/paper-material.html">
-<link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+<link rel="import" href="../bower_components/vaadin-text-field/vaadin-text-field.html">
 <link rel="import" href="../bower_components/vaadin-grid/vaadin-grid.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid-filter.html">
+<link rel="import" href="shared-styles.html">
 
 <dom-module id="employee-list">
   <template>
-    <style include="iron-flex iron-positioning">
+    <style include="shared-styles">
       :host {
         display: block;
-      }
-
-      paper-material {
-        background-color: white;
-        margin: 24px;
-        padding: 16px;
+        background: transparent;
       }
     </style>
 
     <iron-ajax
       auto
-      url="employees.json"
+      url="/employees.json"
       handle-as="json"
       last-response="{{_employees}}"></iron-ajax>
 
-    <paper-material elevation="1" class="fit layout vertical">
-      <vaadin-combo-box label="Filter by first name" items="[[_names]]" value="{{_filterValue}}"></vaadin-combo-box>
-
-      <vaadin-grid id="grid" class="flex">
+    <div class="card">
+      <vaadin-grid items="[[_employees]]">
         <vaadin-grid-column>
-          <template class="header">First name</template>
+          <template class="header">
+            <vaadin-grid-filter aria-label="First Name" path="firstName" value="[[_filterFirstName]]">
+              <vaadin-text-field slot="filter" placeholder="First Name" value="{{_filterFirstName}}" focus-target></vaadin-text-field>
+            </vaadin-grid-filter>
+          </template>
           <template>[[item.firstName]]</template>
         </vaadin-grid-column>
 
         <vaadin-grid-column>
-          <template class="header">Last name</template>
+          <template class="header">
+            <vaadin-grid-filter aria-label="Last Name" path="lastName" value="[[_filterLastName]]">
+              <vaadin-text-field slot="filter" placeholder="Last Name" value="{{_filterLastName}}" focus-target></vaadin-text-field>
+            </vaadin-grid-filter>
+          </template>
           <template>[[item.lastName]]</template>
         </vaadin-grid-column>
 
@@ -44,47 +45,32 @@
           <template>[[item.email]]</template>
         </vaadin-grid-column>
       </vaadin-grid>
-    </paper-material>
-
+    </div>
   </template>
   <script>
-    Polymer({
-      is: 'employee-list',
-
-      properties: {
-        _names: {
-          type: Array,
-          value: function() {
-            return ['Aiden', 'Jace', 'Michael', 'Sarah'];
-          }
-        },
-
-        _employees: {
-          type: Array,
-          value: function() {
-            return [];
-          }
-        },
-
-        _filterValue: {
-          type: String,
-          value: ''
-        }
-      },
-
-      observers: [
-        '_applyFilter(_filterValue, _employees)'
-      ],
-
-      _applyFilter: function(filterValue, employees) {
-        this.$.grid.items = employees.filter(function(item) {
-          if (filterValue) {
-            return (item.firstName.toLowerCase()).indexOf(filterValue.toLowerCase()) > -1;
-          } else {
-            return true;
-          }
-        }.bind(this));
+    class EmployeeList extends Polymer.Element {
+      static get is() {
+        return 'employee-list';
       }
-    });
+      static get properties() {
+        return {
+          _employees: {
+            type: Array,
+            value: function() {
+              return [];
+            }
+          },
+          _filterFirstName: {
+            type: String,
+            value: ''
+          },
+          _filterLastName: {
+            type: String,
+            value: ''
+          }
+        };
+      }
+    }
+    window.customElements.define(EmployeeList.is, EmployeeList);
   </script>
 </dom-module>

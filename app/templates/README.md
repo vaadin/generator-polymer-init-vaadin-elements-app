@@ -1,8 +1,8 @@
-# <%= name %>
+# Vaadin Elements App
 
 ### Intro
 
-This template is a starting point for building progressive web apps with
+This template is a starting point for building progressive web applications with
 [Vaadin Elements](https://vaadin.com/elements) and [Polymer](https://www.polymer-project.org).
 
 ### Setup
@@ -30,17 +30,24 @@ routing for the app:
 
 ### Build
 
-This command performs HTML, CSS, and JS minification on the application
-dependencies, and generates Service workers.
-The minified files are output to the `build/unbundled` folder, and are suitable
-for serving from a HTTP/2+Push compatible server.
+This command builds your Polymer application for production and generates service worker, using build configuration options provided by the command line or in your project's `polymer.json` file.
 
-The command also creates a `build/bundled` folder,
-generated using fragment bundling, suitable for serving from non
-H2/push-compatible servers or to clients that do not support H2/Push.
+You can configure your `polymer.json` file to create multiple builds. You can define your own named builds, or use presets. See the Polymer's documentation on [building your project for production](https://www.polymer-project.org/2.0/toolbox/build-for-production) for more information.
 
     $ polymer build
 
-### Test the build
+### Run tests
 
-    $ polymer serve build/bundled
+This command will run [Web Component Tester](https://github.com/Polymer/web-component-tester)
+against the browsers currently installed on your machine:
+
+    polymer test
+
+### Adding a new view
+
+You can extend the app by adding more views that will be demand-loaded
+e.g. based on the route, or to progressively render non-critical sections of the
+application. Each new demand-loaded fragment should be added to the list of
+`fragments` in the included `polymer.json` file. This will ensure those
+components and their dependencies are added to the list of pre-cached components
+and will be included in the build.

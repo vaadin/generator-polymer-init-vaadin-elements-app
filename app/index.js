@@ -56,6 +56,10 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
   writing() {
     var staticFilesGlob = '*.png|*.ico';
 
+    this.properties.elementClass = this.properties.elementName
+      .replace(/-([a-z])/g, g => g[1].toUpperCase())
+      .replace(/[a-z]/, g => g.toUpperCase());
+
     this.fs.copyTpl(
       path.join(this.templatePath(), '**', `!(_*|${staticFilesGlob})`),
       this.destinationPath(),
@@ -65,6 +69,21 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
     this.fs.copy(
       path.join(this.templatePath(), 'images', '**'),
       path.join(this.destinationPath(), 'images')
+    );
+
+    this.fs.copy(
+      path.join(this.templatePath(), '.eslintrc.json'),
+      path.join(this.destinationPath(), '.eslintrc.json')
+    );
+
+    this.fs.copy(
+      path.join(this.templatePath(), 'test', '.eslintrc.json'),
+      path.join(this.destinationPath(), 'test', '.eslintrc.json')
+    );
+
+    this.fs.copy(
+      path.join(this.templatePath(), '.gitignore'),
+      path.join(this.destinationPath(), '.gitignore')
     );
 
     // Rename main element's file name
@@ -79,7 +98,7 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
   install() {
     this.log(chalk.bold('\nProject generated!'));
     this.log('Installing dependencies...');
-    this.installDependencies({npm: false});
+    this.installDependencies();
   }
 
   end() {

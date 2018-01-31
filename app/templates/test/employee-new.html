@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>employee-new</title>
+
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+
+    <!-- Import the element to test -->
+    <link rel="import" href="../src/employee-new.html">
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <employee-new></employee-new>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('employee-new tests', function() {
+        let submitBtn, termsCheckbox, home;
+
+        setup(function() {
+          home = fixture('basic');
+          const domRoot = home.shadowRoot;
+          submitBtn = domRoot.querySelector('vaadin-button');
+          termsCheckbox = domRoot.querySelector('vaadin-checkbox');
+        });
+
+        suite('form submit', function() {
+          test('disabled with empty form', function() {
+            assert.equal(submitBtn.disabled, true);
+          });
+
+          test('enabled with terms and conditions', function() {
+            termsCheckbox.checked = true;
+            assert.equal(submitBtn.disabled, false);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

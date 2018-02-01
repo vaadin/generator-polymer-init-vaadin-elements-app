@@ -11,7 +11,7 @@ layout: page
 == Overview
 
 The [elementname]#generator-polymer-init-vaadin-elements-app# is a boilerplate template for creating
-a new Polymer Application that uses Paper and Vaadin Elements.
+a new Polymer Application that uses Vaadin Elements.
 
 The template, which smoothly integrates with the
 link:https://github.com/Polymer/polymer-cli[Polymer-CLI] tool, produces a fully featured

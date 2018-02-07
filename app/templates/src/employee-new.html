@@ -106,14 +106,14 @@
       </iron-form>
     </div>
 
-    <vaadin-notification opened="[[fieldSubmitted]]" duration="4000">
+    <vaadin-notification opened="{{formSubmittedOpen}}" duration="4000">
       <template>
         <h3>Submitted</h3>
         Your registration was successful
       </template>
     </vaadin-notification>
 
-    <vaadin-notification opened="[[formInvalid]]" duration="4000">
+    <vaadin-notification opened="{{formInvalidOpen}}" duration="4000">
       <template>
         <h3>Some fields invalid</h3>
         Please fill all the required fields and try again
@@ -143,52 +143,34 @@
         return {
           dietarys: {
             type: Array,
-            value: function() {
-              return [
+            value: () =>
+              [
                 'Ovo-Vegetarian',
                 'Lacto-Vegetarian',
                 'Lacto-Ovo Vegetarians',
                 'Pescetarians',
                 'Other'
-              ];
-            }
+              ]
           },
-          dialogOpen: {
-            type: Boolean,
-            value: false
-          },
-          fieldSubmitted: Boolean,
-          formInvalid: Boolean,
+          dialogOpen: Boolean,
+          formSubmittedOpen: Boolean,
+          formInvalidOpen: Boolean,
           radioValue: String
         };
       }
+
       toggleDialog(e) {
         e.stopPropagation();
         e.preventDefault();
         this.dialogOpen = !this.dialogOpen;
       }
+      
       _submitForm() {
         if (this.$.form.validate()) {
-          this._onSubmit();
+          this.formSubmittedOpen = true;
         } else {
-          this._onInvalid();
+          this.formInvalidOpen = true;
         }
-      }
-      _onInvalid() {
-        if (!this.formInvalid) {
-          setTimeout(() => {
-            this.formInvalid = false;
-          }, 4000);
-        }
-        this.formInvalid = true;
-      }
-      _onSubmit() {
-        if (!this.fieldSubmitted) {
-          setTimeout(() => {
-            this.fieldSubmitted = false;
-          }, 4000);
-        }
-        this.fieldSubmitted = true;
       }
     }
     window.customElements.define(EmployeeNew.is, EmployeeNew);

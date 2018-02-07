@@ -109,6 +109,7 @@
       static get is() {
         return '<%= elementName %>';
       }
+
       static get properties() {
         return {
           page: {
@@ -123,11 +124,13 @@
           rootPath: String,
         };
       }
+
       static get observers() {
         return [
           '_routePageChanged(routeData.page)',
         ];
       }
+
       _routePageChanged(page) {
         // If no page was found in the route data, page will be an empty string.
         // Default to 'employee-list' in that case.
@@ -137,6 +140,7 @@
           this.$.drawer.close();
         }
       }
+
       _pageChanged(page) {
         // Load page import on demand. Show 404 page if fails
         const resolvedPageUrl = this.resolveUrl(page + '.html');
@@ -147,9 +151,11 @@
           true
         );
       }
+
       _showPage404() {
         this.page = '404';
       }
+      
       _drawerToggle() {
         this.$.drawer.toggle();
       }

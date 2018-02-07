@@ -10,7 +10,12 @@
     <style include="shared-styles">
       :host {
         display: block;
-        background: transparent;
+      }
+      vaadin-grid-filter {
+        width: 100%;
+      }
+      vaadin-text-field {
+        width: 100%;
       }
     </style>
 
@@ -56,9 +61,7 @@
         return {
           _employees: {
             type: Array,
-            value: function() {
-              return [];
-            }
+            value: () => []
           },
           _filterFirstName: {
             type: String,

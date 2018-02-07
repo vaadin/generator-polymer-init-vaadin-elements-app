@@ -1,6 +1,6 @@
 {
   "name": "generator-polymer-init-vaadin-elements-app",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Progressive web application template with Polymer App Toolbox and Vaadin Elements",
   "main": "app/index.js",
   "scripts": {

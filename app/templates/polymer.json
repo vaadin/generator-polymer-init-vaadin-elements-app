@@ -1,12 +1,6 @@
 {
   "entrypoint": "index.html",
   "shell": "src/<%= elementName %>.html",
-  "fragments": [
-    "src/employee-list.html",
-    "src/employee-sales.html",
-    "src/employee-new.html",
-    "src/404.html"
-  ],
   "sources": [
    "src/**/*",
    "images/**/*",

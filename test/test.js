@@ -41,18 +41,8 @@ describe('vaadin-elements-app', function() {
         assert.ok(bowerJsonContent.dependencies['polymer']);
       });
 
-      it('should list vaadin-elements', function() {
-        assert.ok(bowerJsonContent.dependencies['vaadin-button']);
-        assert.ok(bowerJsonContent.dependencies['vaadin-form-layout']);
-        assert.ok(bowerJsonContent.dependencies['vaadin-grid']);
-      });
-
-      it('should list vaadin-charts', function() {
-        assert.ok(bowerJsonContent.dependencies['vaadin-charts']);
-      });
-
-      it('should list vaadin-lumo-styles', function() {
-        assert.ok(bowerJsonContent.dependencies['vaadin-lumo-styles']);
+      it('should list vaadin-core', function() {
+        assert.ok(bowerJsonContent.dependencies['vaadin-core']);
       });
     });
   });

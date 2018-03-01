@@ -16,25 +16,7 @@
     "iron-pages": "PolymerElements/iron-pages#^2.0.0",
     "iron-selector": "PolymerElements/iron-selector#^2.0.0",
     "iron-form": "PolymerElements/iron-form#^2.0.0",
-    "vaadin-charts": "vaadin/vaadin-charts#^5.0.0",
-    "vaadin-button": "vaadin/vaadin-button#^2.0.0",
-    "vaadin-checkbox": "vaadin/vaadin-checkbox#^2.0.0",
-    "vaadin-combo-box": "vaadin/vaadin-combo-box#^4.0.0",
-    "vaadin-context-menu": "vaadin/vaadin-context-menu#^4.0.0",
-    "vaadin-date-picker": "vaadin/vaadin-date-picker#^3.0.0",
-    "vaadin-dialog": "vaadin/vaadin-dialog#^2.0.0",
-    "vaadin-dropdown-menu": "vaadin/vaadin-dropdown-menu#^1.0.0",
-    "vaadin-form-layout": "vaadin/vaadin-form-layout#^2.0.0",
-    "vaadin-grid": "vaadin/vaadin-grid#^5.0.0",
-    "vaadin-item": "vaadin/vaadin-item#^2.0.0",
-    "vaadin-list-box": "vaadin/vaadin-list-box#^1.0.0",
-    "vaadin-notification": "vaadin/vaadin-notification#^1.0.0",
-    "vaadin-ordered-layout": "vaadin/vaadin-ordered-layout#^1.0.0",
-    "vaadin-progress-bar": "vaadin/vaadin-progress-bar#^1.0.0",
-    "vaadin-radio-button": "vaadin/vaadin-radio-button#^1.0.0",
-    "vaadin-text-field": "vaadin/vaadin-text-field#^2.0.0",
-    "vaadin-upload": "vaadin/vaadin-upload#^4.0.0",
-    "vaadin-lumo-styles": "vaadin/vaadin-lumo-styles#^1.0.0"
+    "vaadin-core": "vaadin/vaadin-core#10.0.0-alpha21"
   },
   "devDependencies": {
     "web-component-tester": "^6.0.0"

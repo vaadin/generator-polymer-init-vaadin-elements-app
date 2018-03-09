@@ -15,7 +15,6 @@
 <link rel="import" href="shared-styles.html">
 
 <link rel="lazy-import" href="employee-list.html">
-<link rel="lazy-import" href="employee-sales.html">
 <link rel="lazy-import" href="employee-new.html">
 <link rel="lazy-import" href="404.html">
 
@@ -69,7 +68,6 @@
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="employee-list" href="employee-list">Employee list</a>
-          <a name="employee-sales" href="employee-sales">Employee sales</a>
           <a name="employee-new" href="employee-new">New employee</a>
         </iron-selector>
       </app-drawer>
@@ -92,7 +90,6 @@
             fallback-selection="404"
             role="main">
           <employee-list name="employee-list"></employee-list>
-          <employee-sales name="employee-sales"></employee-sales>
           <employee-new name="employee-new"></employee-new>
           <app-404 name="404"></app-404>
         </iron-pages>
@@ -155,7 +152,7 @@
       _showPage404() {
         this.page = '404';
       }
-      
+
       _drawerToggle() {
         this.$.drawer.toggle();
       }

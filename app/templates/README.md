@@ -3,7 +3,7 @@
 ### Intro
 
 This template is a starting point for building progressive web applications with
-[Vaadin Elements](https://vaadin.com/elements) and [Polymer](https://www.polymer-project.org).
+[Vaadin components](https://vaadin.com/components) and [Polymer](https://www.polymer-project.org).
 
 ### Setup
 

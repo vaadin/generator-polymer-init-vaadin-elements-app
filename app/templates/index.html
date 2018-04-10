@@ -69,10 +69,10 @@ This program is available under Apache License Version 2.0, available at https:/
     </script>
 
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
-    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
     <!-- Load your application shell -->
-    <link rel="import" href="src/<%= elementName %>.html">
+    <script type="module" src="src/<%= elementName %>.js"></script>
 
     <!-- Add any global styles for body, document, etc. -->
     <style>

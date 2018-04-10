@@ -35,7 +35,7 @@
     "eslint": "^4.13.0",
     "eslint-config-vaadin": "latest",
     "eslint-plugin-html": "^4.0.0",
-    "web-component-tester": "6.1.5"
+    "wct-browser-legacy": "0.0.1-pre.11"
   },
   "scripts": {
     "lint": "npm run lint:javascript && polymer lint",

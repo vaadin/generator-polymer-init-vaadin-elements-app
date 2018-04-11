@@ -2,16 +2,23 @@
 {
   "root": ".",
   "entrypoint": "index.html",
-  "shell": "src/<%= elementName %>.html",
-  "fragments": [],
+  "shell": "src/<%= elementName %>.js",
+  "fragments": [
+    "src/404.js",
+    "src/employee-list.js",
+    "src/employee-new.js"
+  ],
   "sources": [
     "src/**/*",
     "images/**/*",
     "package.json"
   ],
   "extraDependencies": [
+    "manifest.json",
     "node_modules/@webcomponents/webcomponentsjs/**",
-    "node_modules/mock-http-request/**"
+    "!node_modules/@webcomponents/webcomponentsjs/gulpfile.js",
+    "node_modules/mock-http-request/**",
+    "employees.json"
   ],
   "builds": [
     {

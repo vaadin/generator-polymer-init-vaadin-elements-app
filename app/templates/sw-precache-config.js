@@ -1,6 +1,6 @@
 module.exports = {
   staticFileGlobs: [
-    'node_modules/webcomponentsjs/webcomponents-loader.js',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js',
     'manifest.json',
   ],
   runtimeCaching: [

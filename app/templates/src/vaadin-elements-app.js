@@ -132,16 +132,6 @@ class <%= elementClass %> extends PolymerElement {
 
   _pageChanged(page) {
     // Load page import on demand. Show 404 page if fails
-    import('./' + page + '.js').then((LazyElement) => {
-      console.log("LazyElement loaded");
-    }).catch((reason) => {
-      this._showPage404.bind(this);
-      console.log("LazyElement failed to load", reason);
-    });
-  }
-
-  _pageChanged(page) {
-    // Load page import on demand. Show 404 page if fails
     // Note: `polymer build` doesn't like string concatenation in
     // the import statement, so break it up.
     let loaded;
@@ -159,10 +149,7 @@ class <%= elementClass %> extends PolymerElement {
         loaded = Promise.reject();
     }
 
-    loaded.then(
-      _ => {},
-      _ => { this._showPage404.bind(this) }
-    );
+    loaded.catch(() => this._showPage404.bind(this));
   }
 
   _showPage404() {

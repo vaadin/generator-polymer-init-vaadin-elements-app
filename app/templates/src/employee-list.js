@@ -21,7 +21,7 @@ class EmployeeList extends PolymerElement {
       }
     </style>
 
-    <iron-ajax auto="" url="employees.json" handle-as="json" last-response="{{_employees}}"></iron-ajax>
+    <iron-ajax url="employees.json" handle-as="json" last-response="{{_employees}}"></iron-ajax>
 
     <div class="card">
       <vaadin-grid items="[[_employees]]">
@@ -37,7 +37,7 @@ class EmployeeList extends PolymerElement {
         <vaadin-grid-column>
           <template class="header">
             <vaadin-grid-filter aria-label="Last Name" path="lastName" value="[[_filterLastName]]">
-              <vaadin-text-field slot="filter" placeholder="Last Name" value="{{_filterLastName}}" focus-target=""></vaadin-text-field>
+              <vaadin-text-field slot="filter" placeholder="Last Name" value="{{_filterLastName}}"></vaadin-text-field>
             </vaadin-grid-filter>
           </template>
           <template>[[item.lastName]]</template>

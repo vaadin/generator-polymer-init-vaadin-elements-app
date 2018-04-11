@@ -71,16 +71,6 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
       path.join(this.destinationPath(), 'images')
     );
 
-    this.fs.copy(
-      path.join(this.templatePath(), '.eslintrc.json'),
-      path.join(this.destinationPath(), '.eslintrc.json')
-    );
-
-    this.fs.copy(
-      path.join(this.templatePath(), 'test', '.eslintrc.json'),
-      path.join(this.destinationPath(), 'test', '.eslintrc.json')
-    );
-
     // Rename .gitignore file name
     this.fs.move(
       path.join(this.destinationPath(), 'gitignore'),

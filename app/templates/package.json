@@ -32,14 +32,10 @@
     "@polymer/iron-form": "next"
   },
   "devDependencies": {
-    "eslint": "^4.13.0",
-    "eslint-config-vaadin": "latest",
-    "eslint-plugin-html": "^4.0.0",
     "wct-browser-legacy": "0.0.1-pre.11"
   },
   "scripts": {
     "lint": "npm run lint:javascript && polymer lint",
-    "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test"
   }
 }

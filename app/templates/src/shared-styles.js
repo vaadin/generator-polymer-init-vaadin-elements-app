@@ -1,9 +1,9 @@
-import '../node_modules/@polymer/polymer/polymer-element.js';
-import '../node_modules/@vaadin/vaadin-lumo-styles/color.js';
-import '../node_modules/@vaadin/vaadin-lumo-styles/sizing.js';
-import '../node_modules/@vaadin/vaadin-lumo-styles/spacing.js';
-import '../node_modules/@vaadin/vaadin-lumo-styles/style.js';
-import '../node_modules/@vaadin/vaadin-lumo-styles/typography.js';
+import '@polymer/polymer/polymer-element.js';
+import '@vaadin/vaadin-lumo-styles/color.js';
+import '@vaadin/vaadin-lumo-styles/sizing.js';
+import '@vaadin/vaadin-lumo-styles/spacing.js';
+import '@vaadin/vaadin-lumo-styles/style.js';
+import '@vaadin/vaadin-lumo-styles/typography.js';
 const $_documentContainer = document.createElement('div');
 $_documentContainer.setAttribute('style', 'display: none;');
 

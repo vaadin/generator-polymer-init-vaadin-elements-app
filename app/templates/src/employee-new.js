@@ -1,23 +1,23 @@
-import { PolymerElement } from '../node_modules/@polymer/polymer/polymer-element.js';
-import '../node_modules/@polymer/iron-form/iron-form.js';
-import '../node_modules/@vaadin/vaadin-button/vaadin-button.js';
-import '../node_modules/@vaadin/vaadin-dialog/vaadin-dialog.js';
-import '../node_modules/@vaadin/vaadin-checkbox/vaadin-checkbox.js';
-import '../node_modules/@vaadin/vaadin-form-layout/vaadin-form-layout.js';
-import '../node_modules/@vaadin/vaadin-form-layout/vaadin-form-item.js';
-import '../node_modules/@vaadin/vaadin-text-field/vaadin-text-area.js';
-import '../node_modules/@vaadin/vaadin-radio-button/vaadin-radio-group.js';
-import '../node_modules/@vaadin/vaadin-radio-button/vaadin-radio-button.js';
-import '../node_modules/@vaadin/vaadin-list-box/vaadin-list-box.js';
-import '../node_modules/@vaadin/vaadin-date-picker/vaadin-date-picker.js';
-import '../node_modules/@vaadin/vaadin-dropdown-menu/vaadin-dropdown-menu.js';
-import '../node_modules/@vaadin/vaadin-combo-box/vaadin-combo-box.js';
-import '../node_modules/@vaadin/vaadin-upload/vaadin-upload.js';
-import '../node_modules/@vaadin/vaadin-ordered-layout/vaadin-vertical-layout.js';
-import '../node_modules/@vaadin/vaadin-ordered-layout/vaadin-horizontal-layout.js';
-import '../node_modules/@vaadin/vaadin-notification/vaadin-notification.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import '@polymer/iron-form/iron-form.js';
+import '@vaadin/vaadin-button/vaadin-button.js';
+import '@vaadin/vaadin-dialog/vaadin-dialog.js';
+import '@vaadin/vaadin-checkbox/vaadin-checkbox.js';
+import '@vaadin/vaadin-form-layout/vaadin-form-layout.js';
+import '@vaadin/vaadin-form-layout/vaadin-form-item.js';
+import '@vaadin/vaadin-text-field/vaadin-text-area.js';
+import '@vaadin/vaadin-radio-button/vaadin-radio-group.js';
+import '@vaadin/vaadin-radio-button/vaadin-radio-button.js';
+import '@vaadin/vaadin-list-box/vaadin-list-box.js';
+import '@vaadin/vaadin-date-picker/vaadin-date-picker.js';
+import '@vaadin/vaadin-dropdown-menu/vaadin-dropdown-menu.js';
+import '@vaadin/vaadin-combo-box/vaadin-combo-box.js';
+import '@vaadin/vaadin-upload/vaadin-upload.js';
+import '@vaadin/vaadin-ordered-layout/vaadin-vertical-layout.js';
+import '@vaadin/vaadin-ordered-layout/vaadin-horizontal-layout.js';
+import '@vaadin/vaadin-notification/vaadin-notification.js';
 import './shared-styles.js';
-import { html } from '../node_modules/@polymer/polymer/lib/utils/html-tag.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 class EmployeeNew extends PolymerElement {
   static get template() {
     return html`

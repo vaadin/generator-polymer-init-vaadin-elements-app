@@ -1,10 +1,10 @@
-import { PolymerElement } from '../node_modules/@polymer/polymer/polymer-element.js';
-import '../node_modules/@polymer/iron-ajax/iron-ajax.js';
-import '../node_modules/@vaadin/vaadin-text-field/vaadin-text-field.js';
-import '../node_modules/@vaadin/vaadin-grid/vaadin-grid.js';
-import '../node_modules/@vaadin/vaadin-grid/vaadin-grid-filter.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import '@polymer/iron-ajax/iron-ajax.js';
+import '@vaadin/vaadin-text-field/vaadin-text-field.js';
+import '@vaadin/vaadin-grid/vaadin-grid.js';
+import '@vaadin/vaadin-grid/vaadin-grid-filter.js';
 import './shared-styles.js';
-import { html } from '../node_modules/@polymer/polymer/lib/utils/html-tag.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 class EmployeeList extends PolymerElement {
   static get template() {
     return html`

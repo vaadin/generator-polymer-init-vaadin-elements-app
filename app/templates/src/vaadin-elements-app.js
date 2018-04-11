@@ -1,24 +1,24 @@
-import { PolymerElement } from '../node_modules/@polymer/polymer/polymer-element.js';
-import '../node_modules/@polymer/app-layout/app-drawer/app-drawer.js';
-import '../node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js';
-import '../node_modules/@polymer/app-layout/app-header/app-header.js';
-import '../node_modules/@polymer/app-layout/app-header-layout/app-header-layout.js';
-import '../node_modules/@polymer/app-layout/app-scroll-effects/app-scroll-effects.js';
-import '../node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js';
-import '../node_modules/@polymer/app-route/app-location.js';
-import '../node_modules/@polymer/app-route/app-route.js';
-import '../node_modules/@polymer/iron-pages/iron-pages.js';
-import '../node_modules/@polymer/iron-selector/iron-selector.js';
-import '../node_modules/@polymer/iron-icon/iron-icon.js';
-import '../node_modules/@vaadin/vaadin-lumo-styles/icons.js';
-import '../node_modules/@vaadin/vaadin-button/vaadin-button.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import '@polymer/app-layout/app-drawer/app-drawer.js';
+import '@polymer/app-layout/app-drawer-layout/app-drawer-layout.js';
+import '@polymer/app-layout/app-header/app-header.js';
+import '@polymer/app-layout/app-header-layout/app-header-layout.js';
+import '@polymer/app-layout/app-scroll-effects/app-scroll-effects.js';
+import '@polymer/app-layout/app-toolbar/app-toolbar.js';
+import '@polymer/app-route/app-location.js';
+import '@polymer/app-route/app-route.js';
+import '@polymer/iron-pages/iron-pages.js';
+import '@polymer/iron-selector/iron-selector.js';
+import '@polymer/iron-icon/iron-icon.js';
+import '@vaadin/vaadin-lumo-styles/icons.js';
+import '@vaadin/vaadin-button/vaadin-button.js';
 import './shared-styles.js';
 import './employee-list.js';
 import './employee-new.js';
 import './404.js';
 
-import { setPassiveTouchGestures, setRootPath } from '../node_modules/@polymer/polymer/lib/utils/settings.js';
-import { html } from '../node_modules/@polymer/polymer/lib/utils/html-tag.js';
+import { setPassiveTouchGestures, setRootPath } from '@polymer/polymer/lib/utils/settings.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 // Gesture events like tap and track generated from touch will not be
 // preventable, allowing for better scrolling performance.
 setPassiveTouchGestures(true);

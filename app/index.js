@@ -89,7 +89,7 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
   install() {
     this.log(chalk.bold('\nProject generated!'));
     this.log('Installing dependencies...');
-    this.installDependencies();
+    this.installDependencies({ bower: false });
   }
 
   end() {

@@ -13,9 +13,6 @@ import '@polymer/iron-icon/iron-icon.js';
 import '@vaadin/vaadin-lumo-styles/icons.js';
 import '@vaadin/vaadin-button/vaadin-button.js';
 import './shared-styles.js';
-import './employee-list.js';
-import './employee-new.js';
-import './404.js';
 
 import { setPassiveTouchGestures, setRootPath } from '@polymer/polymer/lib/utils/settings.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';

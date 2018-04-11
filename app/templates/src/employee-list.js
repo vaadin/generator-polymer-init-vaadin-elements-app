@@ -21,7 +21,7 @@ class EmployeeList extends PolymerElement {
       }
     </style>
 
-    <iron-ajax url="employees.json" handle-as="json" last-response="{{_employees}}"></iron-ajax>
+    <iron-ajax auto url="employees.json" handle-as="json" last-response="{{_employees}}"></iron-ajax>
 
     <div class="card">
       <vaadin-grid items="[[_employees]]">

@@ -35,13 +35,14 @@ generateApp(function(err) {
     throw err;
   }
 
-  runWct(function(err) {
-    cleanUp();
+  // Skip tests for P3
+  // runWct(function(err) {
+  //   cleanUp();
 
-    if (err) {
-      throw err;
-    }
+  //   if (err) {
+  //     throw err;
+  //   }
 
-    console.log('E2E tests completed successfully!');
-  });
+  //   console.log('E2E tests completed successfully!');
+  // });
 });

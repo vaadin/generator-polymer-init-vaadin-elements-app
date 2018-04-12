@@ -6,19 +6,17 @@
 
     <title>Tests</title>
 
-    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="./test-suites.js"></script>
   </head>
   <body>
     <script>
-      WCT._config.environmentScripts.push('webcomponentsjs/webcomponents-lite.js');
-
-      WCT.loadSuites([
-        'employee-list.html',
-        'employee-new.html'
-      ]
-        .reduce(function(suites, suite) {
-          return suites.concat([suite, `${suite}?wc-shadydom=true`]);
-        }, [])
+      WCT.loadSuites(
+        window.VaadinPolymerStarterSuites
+          .reduce(function(suites, suite) {
+            return suites.concat([suite, `${suite}?wc-shadydom=true`]);
+          }, [])
       );
     </script>
   </body>

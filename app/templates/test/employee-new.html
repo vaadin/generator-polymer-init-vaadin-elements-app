@@ -7,10 +7,10 @@
 
     <title>employee-new</title>
 
-    <script src="bower_components/web-component-tester/browser.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
 
     <!-- Import the element to test -->
-    <link rel="import" href="src/employee-new.html">
+    <script type="module" src="../src/employee-new.js"></script>
   </head>
   <body>
     <test-fixture id="basic">
@@ -19,7 +19,8 @@
       </template>
     </test-fixture>
 
-    <script>
+    <script type="module">
+      import '../src/employee-new.js';
       suite('employee-new tests', function() {
         let submitBtn, termsCheckbox, home;
 

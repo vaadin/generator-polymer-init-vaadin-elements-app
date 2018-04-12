@@ -1,29 +1,41 @@
+
 {
+  "root": ".",
   "entrypoint": "index.html",
-  "shell": "src/<%= elementName %>.html",
+  "shell": "src/<%= elementName %>.js",
+  "fragments": [
+    "src/404.js",
+    "src/employee-list.js",
+    "src/employee-new.js"
+  ],
   "sources": [
-   "src/**/*",
-   "images/**/*",
-   "bower.json"
+    "src/**/*",
+    "images/**/*",
+    "package.json"
   ],
   "extraDependencies": [
     "manifest.json",
-    "bower_components/webcomponentsjs/*.js",
-    "!bower_components/webcomponentsjs/gulpfile.js",
+    "node_modules/@webcomponents/webcomponentsjs/**",
+    "!node_modules/@webcomponents/webcomponentsjs/gulpfile.js",
+    "node_modules/mock-http-request/**",
     "employees.json"
   ],
-  "lint": {
-    "rules": ["polymer-2"]
-  },
   "builds": [
     {
-      "preset": "es5-bundled"
-    },
-    {
-      "preset": "es6-bundled"
-    },
-    {
-      "preset": "es6-unbundled"
+      "bundle": true,
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "js": {
+        "minify": false,
+        "compile": false,
+        "transformModulesToAmd": false
+      }
     }
-  ]
+  ],
+  "moduleResolution": "node",
+  "npm": true
 }

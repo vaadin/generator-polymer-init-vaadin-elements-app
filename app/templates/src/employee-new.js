@@ -1,25 +1,26 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/iron-form/iron-form.html">
-<link rel="import" href="../bower_components/vaadin-button/vaadin-button.html">
-<link rel="import" href="../bower_components/vaadin-dialog/vaadin-dialog.html">
-<link rel="import" href="../bower_components/vaadin-checkbox/vaadin-checkbox.html">
-<link rel="import" href="../bower_components/vaadin-form-layout/vaadin-form-layout.html">
-<link rel="import" href="../bower_components/vaadin-form-layout/vaadin-form-item.html">
-<link rel="import" href="../bower_components/vaadin-text-field/vaadin-text-area.html">
-<link rel="import" href="../bower_components/vaadin-radio-button/vaadin-radio-group.html">
-<link rel="import" href="../bower_components/vaadin-radio-button/vaadin-radio-button.html">
-<link rel="import" href="../bower_components/vaadin-list-box/vaadin-list-box.html">
-<link rel="import" href="../bower_components/vaadin-date-picker/vaadin-date-picker.html">
-<link rel="import" href="../bower_components/vaadin-dropdown-menu/vaadin-dropdown-menu.html">
-<link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
-<link rel="import" href="../bower_components/vaadin-upload/vaadin-upload.html">
-<link rel="import" href="../bower_components/vaadin-ordered-layout/vaadin-vertical-layout.html">
-<link rel="import" href="../bower_components/vaadin-ordered-layout/vaadin-horizontal-layout.html">
-<link rel="import" href="../bower_components/vaadin-notification/vaadin-notification.html">
-<link rel="import" href="shared-styles.html">
-
-<dom-module id="employee-new">
-  <template>
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import '@polymer/iron-form/iron-form.js';
+import '@vaadin/vaadin-button/vaadin-button.js';
+import '@vaadin/vaadin-dialog/vaadin-dialog.js';
+import '@vaadin/vaadin-checkbox/vaadin-checkbox.js';
+import '@vaadin/vaadin-form-layout/vaadin-form-layout.js';
+import '@vaadin/vaadin-form-layout/vaadin-form-item.js';
+import '@vaadin/vaadin-text-field/vaadin-text-area.js';
+import '@vaadin/vaadin-radio-button/vaadin-radio-group.js';
+import '@vaadin/vaadin-radio-button/vaadin-radio-button.js';
+import '@vaadin/vaadin-list-box/vaadin-list-box.js';
+import '@vaadin/vaadin-date-picker/vaadin-date-picker.js';
+import '@vaadin/vaadin-dropdown-menu/vaadin-dropdown-menu.js';
+import '@vaadin/vaadin-combo-box/vaadin-combo-box.js';
+import '@vaadin/vaadin-upload/vaadin-upload.js';
+import '@vaadin/vaadin-ordered-layout/vaadin-vertical-layout.js';
+import '@vaadin/vaadin-ordered-layout/vaadin-horizontal-layout.js';
+import '@vaadin/vaadin-notification/vaadin-notification.js';
+import './shared-styles.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+class EmployeeNew extends PolymerElement {
+  static get template() {
+    return html`
     <style include="shared-styles">
       :host {
         display: block;
@@ -50,19 +51,19 @@
 
               <vaadin-form-item>
                 <label slot="label">First Name</label>
-                <vaadin-text-field required error-message="Please enter first name" class="full-width"></vaadin-text-field>
+                <vaadin-text-field required="" error-message="Please enter first name" class="full-width"></vaadin-text-field>
               </vaadin-form-item>
 
               <vaadin-form-item>
                 <label slot="label">Last Name</label>
-                <vaadin-text-field required error-message="Please enter last name" class="full-width"></vaadin-text-field>
+                <vaadin-text-field required="" error-message="Please enter last name" class="full-width"></vaadin-text-field>
               </vaadin-form-item>
 
               <vaadin-form-item>
                 <label slot="label">Email</label>
-                <vaadin-text-field required error-message="Please enter email" class="full-width"></vaadin-text-field>
+                <vaadin-text-field required="" error-message="Please enter email" class="full-width"></vaadin-text-field>
               </vaadin-form-item>
-  
+
               <vaadin-form-item>
                 <label slot="label">Birth date</label>
                 <vaadin-date-picker class="full-width"></vaadin-date-picker>
@@ -93,11 +94,11 @@
               </vaadin-form-item>
 
               <vaadin-form-item colspan="2">
-                <vaadin-checkbox checked="{{_canSubmit}}">I have read the <a href on-click="toggleDialog">terms and conditions</a></vaadin-checkbox>
+                <vaadin-checkbox checked="{{_canSubmit}}">I have read the <a href="" on-click="toggleDialog">terms and conditions</a></vaadin-checkbox>
               </vaadin-form-item>
 
               <vaadin-form-item colspan="2">
-                <vaadin-button disabled$="[[!_canSubmit]]" on-click="_submitForm">Submit</vaadin-button>
+                <vaadin-button disabled\$="[[!_canSubmit]]" on-click="_submitForm">Submit</vaadin-button>
               </vaadin-form-item>
 
             </vaadin-form-layout>
@@ -120,7 +121,7 @@
       </template>
     </vaadin-notification>
 
-    <vaadin-dialog id="dialog" no-close-on-esc no-close-on-outside-click opened="{{dialogOpen}}">
+    <vaadin-dialog id="dialog" no-close-on-esc="" no-close-on-outside-click="" opened="{{dialogOpen}}">
       <template>
         <vaadin-vertical-layout theme="spacing">
           <div>
@@ -131,48 +132,44 @@
         </vaadin-vertical-layout>
       </template>
     </vaadin-dialog>
+  `;
+  }
 
-  </template>
+  static get is() {
+    return 'employee-new';
+  }
+  static get properties() {
+    return {
+      dietarys: {
+        type: Array,
+        value: () =>
+          [
+            'Ovo-Vegetarian',
+            'Lacto-Vegetarian',
+            'Lacto-Ovo Vegetarians',
+            'Pescetarians',
+            'Other'
+          ]
+      },
+      dialogOpen: Boolean,
+      formSubmittedOpen: Boolean,
+      formInvalidOpen: Boolean,
+      radioValue: String
+    };
+  }
 
-  <script>
-    class EmployeeNew extends Polymer.Element {
-      static get is() {
-        return 'employee-new';
-      }
-      static get properties() {
-        return {
-          dietarys: {
-            type: Array,
-            value: () =>
-              [
-                'Ovo-Vegetarian',
-                'Lacto-Vegetarian',
-                'Lacto-Ovo Vegetarians',
-                'Pescetarians',
-                'Other'
-              ]
-          },
-          dialogOpen: Boolean,
-          formSubmittedOpen: Boolean,
-          formInvalidOpen: Boolean,
-          radioValue: String
-        };
-      }
+  toggleDialog(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.dialogOpen = !this.dialogOpen;
+  }
 
-      toggleDialog(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        this.dialogOpen = !this.dialogOpen;
-      }
-      
-      _submitForm() {
-        if (this.$.form.validate()) {
-          this.formSubmittedOpen = true;
-        } else {
-          this.formInvalidOpen = true;
-        }
-      }
+  _submitForm() {
+    if (this.$.form.validate()) {
+      this.formSubmittedOpen = true;
+    } else {
+      this.formInvalidOpen = true;
     }
-    window.customElements.define(EmployeeNew.is, EmployeeNew);
-  </script>
-</dom-module>
+  }
+}
+window.customElements.define(EmployeeNew.is, EmployeeNew);

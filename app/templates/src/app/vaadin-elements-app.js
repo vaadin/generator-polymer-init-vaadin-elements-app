@@ -13,7 +13,7 @@ import '@vaadin/vaadin-lumo-styles/icons.js';
 import '../styles/shared-styles.js';
 import { EMPLOYEE_LIST, NEW_EMPLOYEE } from '../routes/pages';
 
-setRootPath(Polymer.rootPath);
+setRootPath(<%= elementClass %>Globals.rootPath);
 
 /**
  * Starter application shell.

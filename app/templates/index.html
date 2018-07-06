@@ -57,12 +57,12 @@ This program is available under Apache License Version 2.0, available at https:/
     <meta name="msapplication-tap-highlight" content="no">
 
     <script>
-      window.Polymer = {rootPath: '/'};
+      window.<%= elementClass %>Globals = {rootPath: '/'};
       // Load and register pre-caching Service Worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('service-worker.js', {
-            scope: Polymer.rootPath,
+            scope: <%= elementClass %>Globals.rootPath,
           });
         });
       }

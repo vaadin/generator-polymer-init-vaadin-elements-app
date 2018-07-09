@@ -23,7 +23,7 @@ export default function setupRouter(outlet) {
       }
     },
     {
-      path: '(.*)+',
+      path: '(.*)',
       component: 'app-404',
       action: () => {
         import('../views/404.js');

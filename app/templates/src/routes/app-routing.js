@@ -1,5 +1,5 @@
 import { Router } from '@vaadin/router';
-import { EMPLOYEE_LIST, NEW_EMPLOYEE } from './pages.js';
+import { EMPLOYEE_LIST, NEW_EMPLOYEE } from './urls.js';
 
 export function init(outlet) {
   const router = new Router(outlet);

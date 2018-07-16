@@ -4,7 +4,7 @@
   "entrypoint": "index.html",
   "shell": "src/app/<%= elementName %>.js",
   "fragments": [
-    "src/routes/config.js",
+    "src/routes/app-routing.js",
     "src/views/404.js",
     "src/views/employee-list.js",
     "src/views/employee-new.js"

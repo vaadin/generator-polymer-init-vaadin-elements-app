@@ -74,6 +74,11 @@ This program is available under Apache License Version 2.0, available at https:/
     <!-- Load your application shell -->
     <script type="module" src="./src/app/<%= elementName %>.js"></script>
 
+    <!-- Preload your application routing shell (so that the browser can start
+         downloading it while the app shell is being parsed and rendered).
+         Check the app shell's ready() method to see how the routing shell is used. -->
+    <script type="module" src="./src/routes/config.js"></script>
+
     <!-- Add any global styles for body, document, etc. -->
     <style>
       body {

@@ -111,9 +111,8 @@ class <%= elementClass %> extends PolymerElement {
 
     // Keeping the routing code in a separate module and dynamically importing
     // it _after_ the app shell is ready improves the first page render performance.
-    import('../routes/config.js').then(config => {
-      const setupRouter = config.default;
-      setupRouter(this.shadowRoot.querySelector('main'));
+    import('../routes/app-routing.js').then(routing => {
+      routing.init(this.shadowRoot.querySelector('main'));
     });
   }
 

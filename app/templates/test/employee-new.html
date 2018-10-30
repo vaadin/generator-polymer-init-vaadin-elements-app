@@ -8,9 +8,9 @@
     <title>employee-new</title>
 
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/@polymer/test-fixture/test-fixture.js" type="module"></script>
 
-    <!-- Import the element to test -->
-    <script type="module" src="../src/employee-new.js"></script>
   </head>
   <body>
     <test-fixture id="basic">
@@ -20,7 +20,8 @@
     </test-fixture>
 
     <script type="module">
-      import '../src/employee-new.js';
+      import '../src/views/employee-new.js';
+
       suite('employee-new tests', function() {
         let submitBtn, termsCheckbox, home;
 

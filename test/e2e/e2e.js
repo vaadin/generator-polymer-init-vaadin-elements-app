@@ -24,7 +24,7 @@ function generateApp(callback) {
 
 function runWct(callback) {
   console.log('Running WCT...');
-  var wctProcess = exec('wct', {}, callback);
+  var wctProcess = exec('wct --npm', {}, callback);
   wctProcess.stdout.pipe(process.stdout);
   wctProcess.stderr.pipe(process.stderr);
 }
@@ -35,14 +35,13 @@ generateApp(function(err) {
     throw err;
   }
 
-  // Skip tests for P3
-  // runWct(function(err) {
-  //   cleanUp();
+  runWct(function(err) {
+    cleanUp();
 
-  //   if (err) {
-  //     throw err;
-  //   }
+    if (err) {
+      throw err;
+    }
 
-  //   console.log('E2E tests completed successfully!');
-  // });
+    console.log('E2E tests completed successfully!');
+  });
 });

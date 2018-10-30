@@ -2,11 +2,12 @@
 {
   "root": ".",
   "entrypoint": "index.html",
-  "shell": "src/<%= elementName %>.js",
+  "shell": "src/app/<%= elementName %>.js",
   "fragments": [
-    "src/404.js",
-    "src/employee-list.js",
-    "src/employee-new.js"
+    "src/routes/app-routing.js",
+    "src/views/404.js",
+    "src/views/employee-list.js",
+    "src/views/employee-new.js"
   ],
   "sources": [
     "src/**/*",
@@ -16,24 +17,62 @@
   "extraDependencies": [
     "manifest.json",
     "node_modules/@webcomponents/webcomponentsjs/**",
-    "!node_modules/@webcomponents/webcomponentsjs/gulpfile.js",
     "node_modules/mock-http-request/**",
     "employees.json"
   ],
   "builds": [
     {
-      "bundle": true,
+      "name": "esm-bundled",
+      "browserCapabilities": [
+        "es2015",
+        "modules"
+      ],
+      "js": {
+        "minify": true
+      },
       "css": {
         "minify": true
       },
       "html": {
         "minify": true
       },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es6-bundled",
+      "browserCapabilities": [
+        "es2015"
+      ],
       "js": {
-        "minify": false,
-        "compile": false,
-        "transformModulesToAmd": false
-      }
+        "compile": "es2015",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es5-bundled",
+      "js": {
+        "compile": "es5",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
     }
   ],
   "moduleResolution": "node",

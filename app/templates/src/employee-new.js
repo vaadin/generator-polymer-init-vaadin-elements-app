@@ -10,12 +10,13 @@ import '@vaadin/vaadin-radio-button/vaadin-radio-group.js';
 import '@vaadin/vaadin-radio-button/vaadin-radio-button.js';
 import '@vaadin/vaadin-list-box/vaadin-list-box.js';
 import '@vaadin/vaadin-date-picker/vaadin-date-picker.js';
-import '@vaadin/vaadin-dropdown-menu/vaadin-dropdown-menu.js';
+import '@vaadin/vaadin-select/vaadin-select.js';
 import '@vaadin/vaadin-combo-box/vaadin-combo-box.js';
 import '@vaadin/vaadin-upload/vaadin-upload.js';
 import '@vaadin/vaadin-ordered-layout/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-ordered-layout/vaadin-horizontal-layout.js';
 import '@vaadin/vaadin-notification/vaadin-notification.js';
+import '@vaadin/vaadin-time-picker/vaadin-time-picker.js';
 import './shared-styles.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 class EmployeeNew extends PolymerElement {
@@ -36,7 +37,7 @@ class EmployeeNew extends PolymerElement {
             <vaadin-form-layout>
               <vaadin-form-item>
                 <label slot="label">Title</label>
-                <vaadin-dropdown-menu class="full-width">
+                <vaadin-select class="full-width">
                   <template>
                     <vaadin-list-box>
                       <vaadin-item>Mr</vaadin-item>
@@ -46,7 +47,7 @@ class EmployeeNew extends PolymerElement {
                       <vaadin-item>Other</vaadin-item>
                     </vaadin-list-box>
                   </template>
-                </vaadin-dropdown-menu>
+                </vaadin-select>
               </vaadin-form-item>
 
               <vaadin-form-item>
@@ -86,6 +87,16 @@ class EmployeeNew extends PolymerElement {
                   <vaadin-radio-button value="fr">Français</vaadin-radio-button>
                   <vaadin-radio-button value="de">Deutsch</vaadin-radio-button>
                 </vaadin-radio-group>
+              </vaadin-form-item>
+
+              <vaadin-form-item>
+                <label slot="label">Arrival hour</label>
+                <vaadin-time-picker class="full-width"></vaadin-time-picker>
+              </vaadin-form-item>
+
+              <vaadin-form-item>
+                <label slot="label">Departure</label>
+                <vaadin-time-picker class="full-width"></vaadin-time-picker>
               </vaadin-form-item>
 
               <vaadin-form-item colspan="2">

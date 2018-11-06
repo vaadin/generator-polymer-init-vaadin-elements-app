@@ -7,10 +7,10 @@
 
     <title>employee-list</title>
 
-    <script src="bower_components/web-component-tester/browser.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/@polymer/test-fixture/test-fixture.js" type="module"></script>
 
-    <!-- Import the element to test -->
-    <link rel="import" href="src/employee-list.html">
   </head>
   <body>
     <test-fixture id="basic">
@@ -19,7 +19,9 @@
       </template>
     </test-fixture>
 
-    <script>
+    <script type="module">
+      import '../src/views/employee-list.js';
+
       suite('employee-list tests', () => {
         let home, ajax, grid;
 
@@ -28,13 +30,6 @@
           const domRoot = home.shadowRoot;
           ajax = domRoot.querySelector('iron-ajax');
           grid = domRoot.querySelector('vaadin-grid');
-        });
-
-        suite('filters', () => {
-          test('empty initial value', () => {
-            assert.equal(home._filterFirstName, '');
-            assert.equal(home._filterLastName, '');
-          });
         });
 
         suite('grid', () => {
@@ -52,12 +47,14 @@
           });
 
           test('has filtered employees after filter change', () => {
-            home._filterFirstName = 'Aiden';
+            const filter = grid.querySelector('vaadin-text-field');
+            filter.value = 'Aiden';
+
             const uniqueNamesInGrid = grid.items
-              .filter(item => item.firstName.includes(home._filterFirstName))
+              .filter(item => item.firstName.indexOf(filter.value) > -1)
               .map(item => item.firstName);
 
-            assert.sameMembers(uniqueNamesInGrid, [home._filterFirstName]);
+            assert.sameMembers(uniqueNamesInGrid, [filter.value]);
           });
         });
       });

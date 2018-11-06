@@ -71,16 +71,6 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
       path.join(this.destinationPath(), 'images')
     );
 
-    this.fs.copy(
-      path.join(this.templatePath(), '.eslintrc.json'),
-      path.join(this.destinationPath(), '.eslintrc.json')
-    );
-
-    this.fs.copy(
-      path.join(this.templatePath(), 'test', '.eslintrc.json'),
-      path.join(this.destinationPath(), 'test', '.eslintrc.json')
-    );
-
     // Rename .gitignore file name
     this.fs.move(
       path.join(this.destinationPath(), 'gitignore'),
@@ -90,8 +80,8 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
     // Rename main element's file name
     if (this.properties.elementName !== 'vaadin-elements-app') {
       this.fs.move(
-        path.join(this.destinationPath(), 'src', 'vaadin-elements-app.html'),
-        path.join(this.destinationPath(), 'src', this.properties.elementName + '.html')
+        path.join(this.destinationPath(), 'src', 'app', 'vaadin-elements-app.js'),
+        path.join(this.destinationPath(), 'src', 'app', this.properties.elementName + '.js')
       );
     }
   }
@@ -99,7 +89,7 @@ module.exports = class VaadinElementsApplicationGenerator extends generators.Bas
   install() {
     this.log(chalk.bold('\nProject generated!'));
     this.log('Installing dependencies...');
-    this.installDependencies();
+    this.installDependencies({ bower: false });
   }
 
   end() {

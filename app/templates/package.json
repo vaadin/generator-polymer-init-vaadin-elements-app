@@ -2,14 +2,31 @@
   "name": "<%= name %>",
   "version": "0.1.0",
   "license": "Apache-2.0",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.2",
+    "@polymer/app-layout": "^3.0.0",
+    "@polymer/app-route": "^3.0.0",
+    "@polymer/iron-ajax": "^3.0.0",
+    "@polymer/iron-form": "^3.0.0",
+    "@polymer/iron-icon": "^3.0.0",
+    "@polymer/iron-pages": "^3.0.0",
+    "@polymer/iron-selector": "^3.0.0",
+    "@polymer/test-fixture": "^4.0.0",
+    "@vaadin/router": "^1.1.0",
+    "@vaadin/vaadin-core": "^12.0.0-alpha5",
+    "@webcomponents/webcomponentsjs": "^2.1.1"
+  },
   "devDependencies": {
-    "eslint": "^4.13.0",
-    "eslint-config-vaadin": "latest",
-    "eslint-plugin-html": "^4.0.0"
+    "wct-browser-legacy": "^1.0.1"
+  },
+  "resolutions": {
+    "type-detect": "1.0.0",
+    "supports-color": "3.1.2",
+    "inherits": "2.0.3",
+    "samsam": "1.1.3"
   },
   "scripts": {
-    "lint": "npm run lint:javascript && polymer lint",
-    "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
-    "test": "polymer test"
+    "lint": "polymer lint --rules polymer-3",
+    "test": "polymer test --npm"
   }
 }

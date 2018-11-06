@@ -24,7 +24,7 @@ function generateApp(callback) {
 
 function runWct(callback) {
   console.log('Running WCT...');
-  var wctProcess = exec('wct', {}, callback);
+  var wctProcess = exec('wct --npm', {}, callback);
   wctProcess.stdout.pipe(process.stdout);
   wctProcess.stderr.pipe(process.stderr);
 }

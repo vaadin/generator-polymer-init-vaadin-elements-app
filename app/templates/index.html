@@ -57,22 +57,27 @@ This program is available under Apache License Version 2.0, available at https:/
     <meta name="msapplication-tap-highlight" content="no">
 
     <script>
-      window.Polymer = {rootPath: document.querySelector('base').getAttribute('href')};
+      window.<%= elementClass %>Globals = {rootPath: '/'};
       // Load and register pre-caching Service Worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('service-worker.js', {
-            scope: Polymer.rootPath,
+            scope: <%= elementClass %>Globals.rootPath,
           });
         });
       }
     </script>
 
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
-    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
     <!-- Load your application shell -->
-    <link rel="import" href="src/<%= elementName %>.html">
+    <script type="module" src="./src/app/<%= elementName %>.js"></script>
+
+    <!-- Preload your application routing code (so that the browser can start
+         downloading it while the app shell is being parsed and rendered).
+         Check the app shell's ready() method to see how the routing is initialized. -->
+    <script type="module" src="./src/routes/app-routing.js"></script>
 
     <!-- Add any global styles for body, document, etc. -->
     <style>

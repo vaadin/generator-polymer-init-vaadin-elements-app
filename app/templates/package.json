@@ -11,12 +11,12 @@
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-pages": "^3.0.0",
     "@polymer/iron-selector": "^3.0.0",
-    "@polymer/test-fixture": "^4.0.0",
     "@vaadin/router": "^1.1.0",
     "@vaadin/vaadin-core": "^12.0.0-alpha5",
     "@webcomponents/webcomponentsjs": "^2.1.1"
   },
   "devDependencies": {
+    "@polymer/test-fixture": "^4.0.0",
     "wct-browser-legacy": "^1.0.1"
   },
   "resolutions": {

@@ -16,7 +16,7 @@
     "iron-pages": "PolymerElements/iron-pages#^2.0.0",
     "iron-selector": "PolymerElements/iron-selector#^2.0.0",
     "iron-form": "PolymerElements/iron-form#^2.0.0",
-    "vaadin-core": "vaadin/vaadin-core#10.0.0"
+    "vaadin-core": "vaadin/vaadin-core#^10.0.7"
   },
   "devDependencies": {
     "web-component-tester": "^6.0.0"

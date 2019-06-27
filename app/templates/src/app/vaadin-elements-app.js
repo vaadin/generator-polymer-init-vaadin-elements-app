@@ -3,8 +3,10 @@ import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { setPassiveTouchGestures, setRootPath } from '@polymer/polymer/lib/utils/settings.js';
 import '@vaadin/vaadin-app-layout/vaadin-app-layout.js';
 import '@vaadin/vaadin-app-layout/vaadin-drawer-toggle.js';
-import '@vaadin/vaadin-item/vaadin-item.js';
-import '@vaadin/vaadin-list-box/vaadin-list-box.js';
+import '@vaadin/vaadin-lumo-styles/color.js';
+import '@vaadin/vaadin-lumo-styles/spacing.js';
+import '@vaadin/vaadin-lumo-styles/typography.js';
+import '@vaadin/vaadin-tabs/vaadin-tabs.js';
 import '../styles/shared-styles.js';
 import { EMPLOYEE_LIST, NEW_EMPLOYEE } from '../routes/urls.js';
 
@@ -19,25 +21,9 @@ setRootPath(<%= elementClass %>Globals.rootPath);
 class <%= elementClass %> extends PolymerElement {
   static get template() {
     return html`
-      <style include="shared-styles">
+      <style include="lumo-typography">
         :host {
           display: block;
-        }
-        vaadin-item {
-          padding: 0;
-        }
-        h3 {
-          padding: 0 var(--lumo-space-m);
-          font-weight: 400;
-        }
-        a {
-          display: block;
-          color: inherit;
-          outline: none;
-          line-height: 36px;
-        }
-        a:hover {
-          text-decoration: none;
         }
         [main-title] {
           padding: var(--lumo-space-m) 0;
@@ -54,15 +40,14 @@ class <%= elementClass %> extends PolymerElement {
 
         <!-- Drawer content -->
         <section slot="drawer">
-          <h3>Menu</h3>
-          <vaadin-list-box selected="{{selected}}">
-            <vaadin-item>
+          <vaadin-tabs selected="{{selected}}" orientation="vertical">
+            <vaadin-tab>
               <a href="/employee-list">Employee list</a>
-            </vaadin-item>
-            <vaadin-item>
+            </vaadin-tab>
+            <vaadin-tab>
               <a href="/employee-new">New employee</a>
-            </vaadin-item>
-          </vaadin-list-box>
+            </vaadin-tab>
+          </vaadin-tabs>
         </section>
 
         <!-- Main content -->

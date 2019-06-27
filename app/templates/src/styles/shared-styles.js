@@ -35,8 +35,7 @@ const $layout = html`
         }
 
         [part='navbar'] {
-          align-items: center;
-          color: var(--lumo-base-color);
+          color: var(--lumo-primary-contrast-color);
           background: var(--lumo-primary-color);
         }
       </style>
@@ -51,11 +50,7 @@ const $drawer = html`
     <template>
       <style>
         :host {
-          width: var(--lumo-size-l);
-          height: var(--lumo-size-l);
           margin: 0 var(--lumo-space-m);
-          padding: 0;
-          background: transparent;
           color: currentColor;
         }
       </style>
